@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="notacreditoVm"  position="center" class="col-12 col-sm-12 col-md-10 col-lg-10" closable="true"  
+         apply="org.zkoss.bind.BindComposer" >
+    
+    <caption label="Generar nota de credito" style="font-weight:bold" /> 
+    <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.NotaCreditoDebitoVm')" width="100%">
+        <tabbox  width="100%"  tabscroll="true" >
+            <tabs >
+                <tab label="NOTA DE CREDITO" sclass="menutabs"/>
+            </tabs>
+            <tabpanels >
+                <tabpanel  height="100%" width="98%"  >
+                    <div class="container-fluid">
+                        <!-- <div class="row ">
+                            <div class="col-12 col-sm-12 col-md-1 col-lg-1 " align="center">
+                                
+                               
+                                 
+                                <button src="/iconos/guardar.png"   
+                                        autodisable="self"
+                                        class="btn btn btn-secondary btn-sm "
+                                        onClick="@command('Guardar')"
+                                        tooltiptext="Guardar factura"/>
+                           
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-1 col-lg-1">
+                                <label value="DESC" class="form-control form-control-sm" style="font-weight:bold"/>
+                
+                                <decimalbox  value="@bind(vm.totalDescuento)"
+                                             format="###.##" 
+                                             readonly="true" style="text-align:center;font-size:1em"
+                                             onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                             class="form-control form-control-sm" />
+
+                            </div>
+                            <div class="col-8 col-sm-8 col-md-2 col-lg-2 form-group " align="center"  >
+                                <label value="SUB-TOTAL" class="form-control form-control-sm" style="font-weight:bold"/>
+                
+                                <decimalbox  value="@bind(vm.subTotalCotizacion)"
+                                             format="###.##" 
+                                             readonly="true" style="text-align:center;font-size:1.2em"
+                                             onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                             class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-8 col-sm-8 col-md-2 col-lg-2 form-group " align="center"  >
+                                <label value="SUB-CERO" class="form-control form-control-sm" style="font-weight:bold"/>
+                
+                                <decimalbox  value="@bind(vm.subTotalBaseCero)"
+                                             format="###.##" 
+                                             readonly="true" style="text-align:center;font-size:1.2em"
+                                             onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                             class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-8 col-sm-8 col-md-2 col-lg-2  form-group " align="center"  >
+                                <label value="IVA" class="form-control form-control-sm" 
+                                       style="font-weight:bold"/>
+                
+                                <decimalbox  value="@bind(vm.ivaCotizacion)"
+                                             format="###.##" 
+                                             readonly="true" style="text-align:center;font-size:1.2em"
+                                             onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                             class="form-control form-control-sm" />
+                            </div>
+                            <div class="col-8 col-sm-8 col-md-2 col-lg-2  form-group " align="center"  >
+                                <label value="TOTAL" class="form-control form-control-sm" style="font-weight:bold"/>
+                
+                                <decimalbox  value="@bind(vm.valorTotalCotizacion)"
+                                             format="###.##" 
+                                             readonly="true"  style="text-align:center;font-size:1.2em"
+                                             onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                             class="form-control form-control-sm" />
+                            </div>
+                            
+                            
+
+                            
+                        </div>
+                        <div class="row" align="lefth" >
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+                                <div class="input-group mb-3">
+                                    
+                                    <textbox   class="form-control form-control-sm" 
+                                               placeholder="Cedula"
+                                               readonly="true"
+                                               value="@bind(vm.clienteBuscado.cliCedula)"                                                
+                                               style="font-weight:bold"
+                                               maxlength="13"  />
+                        
+
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+                                <div class="input-group mb-3">
+                                    <textbox  readonly="true" 
+                                              style="font-weight:bold" 
+                                              placeholder="Nombre comercial"
+                                              class="form-control form-control-sm" 
+                                              value="@bind(vm.clienteBuscado.cliNombre)"  />
+                                </div>
+                            </div>
+                            <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                <div class="input-group mb-3">
+                                    <textbox  readonly="true" 
+                                              style="font-weight:bold" 
+                                              placeholder="Dirección"
+                                              value="@bind(vm.clienteBuscado.cliDireccion)" 
+                                              class="form-control form-control-sm"   />
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2">
+                                <div class="input-group mb-3">
+                                    <textbox  readonly="true" 
+                                              style="font-weight:bold" 
+                                              placeholder="Telefono"
+                                              value="@bind(vm.clienteBuscado.cliTelefono)"
+                                              class="form-control form-control-sm" 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-1 col-sm-1 col-md-1 col-lg-1" align="end" >
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2" align="end" >
+                                 
+                                <datebox compact="true" value="@bind(vm.fechafacturacion)" 
+                                         readonly="true" style="font-weight:bold;" 
+                                         class="form-control form-control-sm textoFechaDateBox"  
+                                         buttonVisible="true" 
+                                         lenient="true" format="dd/MM/yyyy" 
+                                         constraint="no empty: Ingrese su fecha de la orden"/>
+
+                            </div>
+                        </div> -->
+
+                         <div class="factura_header">
+                        <div class="fact_row">
+                            <div class="wrapper_data">
+                                <div class="wrapper_input">
+                                    <span>Total Desc.:</span>
+                                    <decimalbox  
+                                        value="@bind(vm.totalDescuento)"
+                                        format="###.##" 
+                                        readonly="true"
+                                        onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                        class="input" 
+                                    />
+                                     
+                                </div>
+                                <div class="wrapper_input">
+                                    <span>Subtotal:</span>
+                                    <decimalbox  
+                                        value="@bind(vm.subTotalCotizacion)"
+                                        format="###.##" 
+                                        readonly="true"
+                                        onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                        class="input" 
+                                    />
+                                </div>
+                                <div class="wrapper_input">
+                                    <span>Sub / Cero:</span>
+                                    <decimalbox  
+                                        value="@bind(vm.subTotalBaseCero)"
+                                        format="###.##" 
+                                        readonly="true"
+                                        onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                        class="input" 
+                                    />
+                                </div>
+                                <div class="wrapper_input">
+                                    <span>IVA:</span>
+                                    <decimalbox  
+                                        value="@bind(vm.ivaCotizacion)"
+                                        format="###.##" 
+                                        readonly="true"
+                                        onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                        class="input" 
+                                    />
+                                </div>
+                                
+                            </div>
+
+                            <div class="wrapper_data">
+                                 <div class="wrapper_input wrapper_total">
+                                    <span style="text_total">Total:</span>
+
+                                    <decimalbox  
+                                        format="###.##"   
+                                        value="@bind(vm.valorTotalCotizacion)"                                                 
+                                        readonly="true"
+                                        
+                                    />
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="fact_row">
+                            <div class="wrapper_data">
+                                <div class="wrapper_input">
+                                    <span>Cliente:</span>
+                                    <textbox   
+                                        class="input" 
+                                        placeholder="Cedula"
+                                        readonly="true"
+                                        value="@bind(vm.clienteBuscado.cliCedula)"  
+                                        maxlength="13"  
+                                    />
+                        
+                                </div>
+                                <div class="wrapper_input">
+                                    <span>Nombre comercial:</span>
+                                    <textbox  
+                                        readonly="true"  
+                                        placeholder="Nombre comercial"
+                                        class="input" 
+                                        value="@bind(vm.clienteBuscado.cliNombre)"  
+                                    />
+                                </div>
+                                <div class="wrapper_input">
+                                    <span>Telf:</span>
+                                    <textbox  
+                                        readonly="true"  
+                                        placeholder="Telefono"
+                                        value="@bind(vm.clienteBuscado.cliTelefono)"
+                                        class="input" 
+                                    />
+                                </div>
+                                <div class="wrapper_input">
+                                    <span>Fecha :</span>
+                                    <datebox 
+                                        compact="true" 
+                                        value="@bind(vm.fechafacturacion)" 
+                                        readonly="true" 
+                                        class="input_date"  
+                                        buttonVisible="true" 
+                                        lenient="true" 
+                                        format="dd/MM/yyyy" 
+                                        constraint="no empty: Ingrese su fecha de la orden"
+                                    />
+                                </div>
+                            </div>
+                          
+                            <div class="fact_row wrapper_buttons">
+                                
+                                <button 
+                                    autodisable="self"   
+                                    class="fa-solid fa-floppy-disk btn_fact btn_primary"                  
+                                    onClick="@command('Guardar',valor='SG')"
+                                    tooltiptext="Guardar"
+                                    label="Guardar"
+                                />
+                                
+                            </div>
+                        
+                        </div> 
+                    </div>
+       
+                        <div class="factura_body">
+                            <listbox id="DescripcionPedidoPrePost" 
+                                        model="@load(vm.listaDetalleFacturaDAOMOdel)"
+                                        nonselectableTags="*" checkmark="true"  
+                                        multiple="true" 
+                                        onSelect="@command('seleccionarRegistros')"  width="99%">
+                                <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+                                            
+                                    
+                                <listhead>
+                                    <listheader width="7%"  label="" align="left" >
+                                        <button label="" src="/iconos/delete.png"  
+                                                onClick="@command('eliminarRegistros')"  
+                                                class="btn btn btn-secondary btn-sm "
+                                                tooltiptext="Eliminar registros seleccionados"/>
+                                    </listheader>
+                                    <listheader width="10%"  label="COD" align="left" />
+                                    <listheader width="8%"  label="CANT" align="left"  /> 
+                                    <listheader width="7%"  label="DES(%)" align="left"  /> 
+                                    <listheader width="20%"  label="DESCRIPCIÓN" align="left" />
+                                    <listheader width="12%"  label="P.REAL" align="left" />                                         
+                                    <listheader width="12%"  label="DESC" align="left" />
+                                    <listheader width="12%"  label="P FINAL" align="left" />
+                                    <!--                                        <listheader width="10%"  label="IVA" align="left" />
+                                    <listheader width="10%"  label="DESC" align="left" />
+                                    <listheader width="10%"  label="P UNIT" align="left" />-->
+                                    <listheader width="12%"  label="TOTAL" align="left" />
+                                                                                                                        
+                                </listhead>
+                
+                                <template name="model">                                                            
+                                    <listitem>
+                                        <listcell>
+                                                
+                                        </listcell>
+                                        <listcell >
+                                            <textbox 
+                                                class="form-control form-control-sm"
+                                                readonly="true"
+                                                value="@bind(each.codigo)" 
+                                                width="99%" />
+                                        </listcell>
+                                        <listcell>
+                                            <decimalbox class="input-group-append"
+                                                onOK="@command('calcularValores',valor=each)"
+                                                    
+                                                        format="###.##" value="@bind(each.cantidad)" width="95%"  />
+                                        </listcell>
+                                        <listcell>
+                                            <decimalbox class="input-group-append"
+                                            readonly="true"
+                                                        format="###.##" value="@bind(each.detPordescuento)" width="95%"  />
+                                        </listcell>
+                                        <listcell>
+                                            <label  value="@bind(each.producto.prodNombre)" width="99%" />
+                                        </listcell>
+                                        <!--                                            <listcell>
+                                            <decimalbox readonly="true" format="###.##"
+                                                        class="form-control form-control-sm"
+                                                        value="@bind(each.subTotal)"  width="99%" />
+                                        </listcell>-->
+                                    
+                                        <!--                                            <listcell>
+                                            <decimalbox readonly="true" format="###.##" 
+                                                        class="form-control form-control-sm"
+                                                        value="@bind(each.subTotalDescuento)"  width="99%" />
+                                        </listcell>-->
+                                        <listcell>
+                                            <decimalbox readonly="true" format="###.##" 
+                                                        class="form-control form-control-sm"
+                                                        value="@bind(each.total)"  width="99%" />
+                                        </listcell>
+                                        
+                                        <listcell>
+                                            <decimalbox readonly="true" format="###.##" 
+                                            
+                                                        class="form-control form-control-sm"
+                                                        value="@bind(each.detValdescuento)"  width="99%" />
+                                        </listcell>
+                                        <listcell>
+                                            <decimalbox readonly="true" format="###.##" 
+                                                        class="form-control form-control-sm"
+                                                        value="@bind(each.detTotaldescuento)"  width="99%" />
+                                        </listcell>
+                                        <listcell>
+                                            <decimalbox readonly="true" format="###.##" 
+                                                        class="form-control form-control-sm"
+                                                        value="@bind(each.detTotalconivadescuento)"  width="99%" />
+                                        </listcell>
+                                                                            
+                                    </listitem>
+                                </template>
+
+                            </listbox>
+                        </div>
+                    </div>
+                </tabpanel>
+            </tabpanels>
+        </tabbox>    
+    </hbox>
+
+                  
+</window>

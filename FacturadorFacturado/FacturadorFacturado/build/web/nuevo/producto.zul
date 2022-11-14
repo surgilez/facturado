@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowCliente"  position="center" closable="true"  
+         apply="org.zkoss.bind.BindComposer" 
+         viewModel="@id('vm') @init('com.ec.controlador.NuevoProducto')">
+    
+
+    <caption label="Producto" style="font-weight:bold" /> 
+       
+    <div class="container_modal">
+        <div class="header">
+            <div class="wrapper_input_mod">
+                <span>Tipo: </span>
+                <radiogroup  
+                    class="radio_group"
+                    selectedItem="@bind(vm.esProducto)" 
+                >                                            
+                    <radio label="PRODUCTO" value="P"/>
+                    <space bar="false"  />   
+                    <radio label="SERVICIO" value="S"/>                          
+                </radiogroup>
+            </div>
+            <div class="wrapper_input_mod">
+                <span>Declaración: </span>
+                <radiogroup
+                    class="radio_group" 
+                    onCheck="@command('colocarIva')" 
+                    selectedItem="@bind(vm.conIva)"  
+                >                   
+                    <radio label="Graba IVA" value="S"/>
+                    <space bar="false"  />   
+                    <radio label="Sin IVA" value="N"/>                          
+                </radiogroup>
+            </div>
+            <div class="wrapper_input_mod" style="position: relative">
+                <span>F. Registro: </span>
+                <datebox 
+                    compact="true" 
+                    value="@bind(vm.producto.prodFechaRegistro)" 
+                    readonly="true"
+                    buttonVisible="true" 
+                    lenient="true" 
+                    format="dd/MM/yyyy" 
+                    class="input_date"
+                />
+                <div 
+                    class="fa-solid fa-calendar"
+                    style="position: absolute; left: 35%; top: 10px;color:  #1247b9;font-size: 12px"
+                />
+            </div>
+
+        </div>
+
+        <div class="body">
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Código: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-barcode icon"></div>
+                        <textbox  
+                            maxlength="20"   
+                            onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                            value="@bind(vm.producto.prodCodigo)"  
+                            class="input_text" />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Nombre: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-user icon"></div>
+                        <textbox  
+                            maxlength="100" 
+                            value="@bind(vm.producto.prodNombre)"
+                            onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                            constraint="no empty: Campo requerido"
+                            class="input_text" />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Costo / compra: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-sack-dollar icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,5})?$/:Ingrese solo numeros"                                                        
+                            onOK="@command('calcularValores')"
+                            onChange="@command('calcularValores')"
+                            value="@bind(vm.producto.pordCostoCompra)"   
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>%IVA recuperar: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-wallet icon"></div>
+                        <textbox  
+                            id="txtIvaRec"  
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,3})?$/:Ingrese solo numeros"
+                            onOK="@command('calcularValores')"
+                            value="@bind(vm.producto.prodIva)"  
+                            class="input_text" />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Compra / IVA: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-hand-holding-dollar icon"></div>
+                        <textbox    
+                            readonly="true"
+                            value="@bind(vm.producto.pordCostoVentaRef)"  
+                            class="input_text"   
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Precio sin subsidio: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,3})?$/:Ingrese solo numeros"                            
+                            value="@bind(vm.producto.prodPrecioSinSubsidio)"  
+                            class="input_text"  
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>% Utilidad: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-percent icon"></div>
+                        <textbox 
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,3})?$/:Ingrese solo numeros"
+                            onOK="@command('calculopreciofinal')"
+                            value="@bind(vm.producto.prodUtilidadNormal)"  
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Precio / Unidad: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,5})?$/:Ingrese solo numeros"
+                            onOK="@command('calculoutilidad')"
+                            value="@bind(vm.producto.pordCostoVentaFinal)"  
+                            class="input_text"  
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Subsidio: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-wallet icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,3})?$/:Ingrese solo numeros"                            
+                            value="@bind(vm.producto.prodSubsidio)"  
+                            class="input_text"  
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>% Utilidad por mayor: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-wallet icon"></div>
+                        <textbox    
+                            onOK="@command('calculopreciofinalUno')"
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,3})?$/:Ingrese solo numeros"                            
+                            value="@bind(vm.producto.prodUtilidadPreferencial)"   
+                            class="input_text"  
+                        />
+                    </div>
+                </div>
+
+                <div class="wrapper_input_mod">
+                    <span>Precio / 3 Unid.: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,5})?$/:Ingrese solo numeros" 
+                            onOK="@command('calculoutilidadUno')"
+                            value="@bind(vm.producto.prodCostoPreferencial)"  
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+
+
+
+
+
+                
+                <div class="wrapper_input_mod">
+                    <span>Cant. mínima: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox 
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,2})?$/:Ingrese solo numeros"                            
+                            value="@bind(vm.producto.prodCantMinima)"  
+                            class="input_text"  
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>% Utilidad por caja: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox constraint="/^[0-9]{1,9}(?:[.][0-9]{1,3})?$/:Ingrese solo numeros"
+                                 onOK="@command('calculopreciofinalDos')"
+                                 value="@bind(vm.producto.prodUtilidadDos)"  
+                                 class="input_text" 
+                        />
+                    </div>
+                </div>
+                
+                <div class="wrapper_input_mod">
+                    <span>Precio / 6 Unid.: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox    constraint="/^[0-9]{1,9}(?:[.][0-9]{1,5})?$/:Ingrese solo numeros"
+                                    onOK="@command('calculoutilidadDos')"
+                                    value="@bind(vm.producto.prodCostoPreferencialDos)" 
+                                    class="input_text" 
+                        />
+                    </div>
+                </div>
+
+                <div class="wrapper_input_mod">
+                    <span>Cant. inicial: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox constraint="/^[0-9]{1,9}(?:[.][0-9]{1,2})?$/:Ingrese solo numeros"                       
+                                 value="@bind(vm.producto.prodCantidadInicial)"  
+                                 class="input_text"  
+                        />
+                    </div>
+                </div>
+
+               
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Precio / caja: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,5})?$/:Ingrese solo numeros"
+                            value="@bind(vm.producto.prodCostoPreferencialTres)" 
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Graba ICE: </span>
+                    <div class="wrapper_input_text">
+                        <radiogroup  
+                            class="radio_group"
+                            selectedItem="@bind(vm.conICE)" 
+                        >                                            
+                            <radio label="SI" value="S"/>
+                            <space bar="false"  />   
+                            <radio label="NO" value="N"/>                          
+                        </radiogroup>
+                    </div>
+                    
+                
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>% ICE: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox    constraint="/^[0-9]{1,9}(?:[.][0-9]{1,5})?$/:Ingrese solo numeros"
+                                    onOK="@command('calculoutilidadDos')"
+                                    value="@bind(vm.producto.prodPorcentajeIce)" 
+                                    class="input_text" 
+                        />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="body">
+            <div class="container_row_input">
+              
+                
+
+                <div class="wrapper_input_mod">
+                    <span>Unid. medida origen: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-ruler icon"></div>
+                        <combobox  
+                            selectedItem="@bind(vm.producto.prodUnidadMedida)"  
+                            readonly="true"  
+                            class="input_select"
+                        >
+                            <comboitem label="UNIDAD" value="UNIDAD" />
+                            <comboitem label="KILO" value="KILO" />
+                            <comboitem label="METROS" value="METROS" />
+                        </combobox>
+                        <div 
+                            class="fa-solid fa-chevron-down"
+                            style="position: absolute; right: 7px; top: 7px; color: #1247b9;font-size: 13px" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Factor de conversion: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-percent icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,5})?$/:Ingrese solo numeros"
+                            value="@bind(vm.producto.prodFactorConversion)" 
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Unid. medida convertir </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-ruler-combined icon"></div>
+                        <combobox  
+                            selectedItem="@bind(vm.producto.prodUnidadConversion)"                                      
+                            readonly="true"  
+                            class="input_select" >
+                            <comboitem label="UNIDAD" value="UNIDAD" />
+                            <comboitem label="KILO" value="KILO" />
+                            <comboitem label="METROS" value="METROS" />
+                        </combobox>
+                        <div 
+                            class="fa-solid fa-chevron-down"
+                            style="position: absolute; right: 7px; top: 7px; color: #1247b9;font-size: 13px" 
+                        />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;">
+            <button class="btn_modal" style="width:300px"
+                    onClick="@command('guardar')"
+                    tooltiptext="Guardar Registro">
+                Guardar
+            </button>
+        </div>
+    </div>
+   
+                    
+                  
+</window>

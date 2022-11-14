@@ -1,0 +1,91 @@
+<?link rel="stylesheet" type="text/css" href="/css/app/landing/signin.css?v1"?>
+
+<?script src="https://kit.fontawesome.com/484b16c999.js?v1"?>
+<?script src="./js/inicio_1.js"?>
+
+<?link rel="icon" type="image/x-icon" href="/imagenes/facturados/logo2.jpg"?>  
+<?page title="Facturacion electrónica" contentType="text/html;charset=UTF-8"?>
+
+<zk >
+
+ 
+
+   
+
+     <div class="all_wrapper" id="loginWin" apply="com.ec.controlador.LoginController">
+
+
+        <div class="contendor_imagen_planta contendor_imagen_planta_1">
+            <image src="./imagenes/paybills/planta2.png" />
+        </div>
+
+        <div class="contendor_imagen_planta contendor_imagen_planta_2">
+            <image src="./imagenes/paybills/planta1.png" />
+        </div>
+
+        <div class="container_landing login_container">
+
+            <div class="contendor_signin">
+
+                <div class="contendor_imagen_nube">
+                   <image src="./imagenes/paybills/planta3.png" />
+                </div>
+                <div class="info_login">
+                    <span class="title">Iniciar sesión</span>
+                   
+                    <span class="subtitle">Aún no te has registrado?
+                        <span class="item_nav" id="btnRegistra">Registrate aquí</span>
+                    </span>
+                </div>
+                <div class="contendor_body">
+                    <div class="contendor_inputs wrapper_all_inputs">
+                        <div class="contendor_input">
+                            <span class="fas fa-user-cog icon "> </span>
+                            <textbox type="text" placeholder="Usuario" class="input" id="account"
+                                onCreate="self.focus()" />
+                        </div>
+                        <div class="contendor_input">
+                           <span class="fas fa-key icon"> </span>
+                            <textbox  type="password" placeholder="Contraseña" id="password"
+                                class="input input_password input_password_reg" />
+                            <span class="fa-solid icon icon_eye fa-eye icon_eye_reg"></span>
+                        </div>
+                    </div>
+
+                    <div class="forgot_password" id="linkOlvideContrasena">
+                        Olvide la contraseña
+                    </div>
+
+                    <div class="contenedor_button">
+                        <button class="btn btn_reg" style="width: 100%" id="buttonEntrar">
+                            Iniciar Sesión
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+           <div class="contendor_imagen">
+
+                <image class="z-image logo" src="./imagenes/facturados/logo.png" />
+                <image class="z-image imgLogin" src="./imagenes/facturados/imgLogin.png" />
+                
+            </div>
+
+
+        </div>
+        <div class="wrapper_loading loading_inicio">
+            <div class="lds-ring">
+                <div />
+                <div />
+                <div />
+                <div />
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</zk>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowCliente"  position="center"  closable="true"  
+         apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('com.ec.controlador.NuevoCliente')">
+    
+    <caption label="Cliente" style="font-weight:bold"/>  
+    <div class="container_modal">
+
+        <div class="body">
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Identificación: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-address-card icon"></div>
+                        <combobox  
+                            model="@load(vm.listaIdentificaciones)"  
+                            selectedItem="@bind(vm.tipoadentificacion)"
+                            class="input_select"
+                            readonly="true" 
+                        >           
+                            <template name="model">
+                                <comboitem  label="@bind(each.tidNombre)"/>
+                            </template>                                      
+                        </combobox>
+
+
+                        <div 
+                            class="fa-solid fa-chevron-down"
+                            style="position: absolute; right: 7px; top: 7px; color: #1247b9;font-size: 13px" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Ruc: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-address-card icon"></div>
+                        <textbox    
+                            id="txtRuc" 
+                            onOK="@command('buscarAduana')"
+                            value="@bind(vm.cliente.cliCedula)" 
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Nombres: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-user icon"></div>
+                        <textbox  
+                            maxlength="100" 
+                            onChange="self.setValue(self.getValue().toUpperCase())"
+                            value="@bind(vm.cliente.cliNombres)" 
+                            class="input_text"
+                        />
+                    </div>
+                </div>
+
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Apellidos: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-user icon"></div>
+                        <textbox  
+                            maxlength="100" 
+                            onChange="self.setValue(self.getValue().toUpperCase())"
+                            value="@bind(vm.cliente.cliApellidos)" 
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Nombre comercial: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-clipboard-user icon"></div>
+                        <textbox  id="txtNombreComercial"
+                          maxlength="100" 
+                          value="@bind(vm.cliente.cliNombre)" 
+                          onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                          
+                          class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Ciudad: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-city icon"></div>
+                        <textbox   maxlength="100" 
+                          value="@bind(vm.cliente.ciudad)" 
+                          onChange="self.setValue(self.getValue().toUpperCase());" 
+                          class="input_text" 
+                        />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="body">
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Fecha Registro: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-calendar icon"></div>
+                        <datebox compact="true" 
+                            value="@bind(vm.fechaReg)" 
+                            readonly="true"   
+                            buttonVisible="true" 
+                            lenient="true" 
+                            format="dd/MM/yyyy"
+                            class="input_date"
+                         />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Telf. Conv. </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-phone icon"></div>
+                        <textbox  maxlength="100"
+                          value="@bind(vm.cliente.cliTelefono)" 
+                          
+                          class="input_text" 
+                          />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Telf. Cel. </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-mobile icon"></div>
+                        <textbox  maxlength="10"  
+                          value="@bind(vm.cliente.cliMovil)"
+                          class="input_text" 
+                          />
+                    </div>
+                </div>
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Monto asignado: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-sack-dollar icon"></div>
+                        <textbox    
+                            constraint="/^[0-9]{1,9}(?:[.][0-9]{1,3})?$/:Ingrese solo numeros"
+                            value="@bind(vm.cliente.cliMontoAsignado)"  
+                            class="input_text"  
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Dirección. </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-location-dot icon"></div>
+                        <textbox id="txtDireccion" maxlength="100" 
+                         value="@bind(vm.cliente.cliDireccion)" 
+                         onChange="self.setValue(self.getValue().toUpperCase());" 
+                          
+                         class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Correo. </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-envelope icon"></div>
+                        <textbox id="txtCorreo"
+                         maxlength="100" 
+                         value="@bind(vm.cliente.cliCorreo)"
+                         class="input_text" 
+                        />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="display:flex;justify-content:flex-end;">
+            <button class="btn_modal" style="width:300px" onClick="@command('guardar')">
+                Guardar
+            </button>
+        </div>
+    </div>
+                  
+
+                    
+                  
+</window>

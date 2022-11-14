@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowEstFact"  position="center" closable="true"  
+         apply="org.zkoss.bind.BindComposer" 
+         viewModel="@id('vm') @init('com.ec.controlador.CambioEstadoFactura')">
+    
+    <caption label="Estado de la factura" style="font-weight:bold"/> 
+    
+    <!-- <div  class="container-fluid" >
+        <div  class="row" >
+            <div class="col-12 col-sm-6 col-md-12 col-lg-12  form-group "  >
+                <label value="(*) " style="color:red;font-weight:bold"/>Estado: 
+                <combobox readonly="true"                                        
+                          selectedItem="@bind(vm.facturar.estadosri)"                                >
+                    <comboitem label="ANULADA" value="ANULADA" />                    
+                    <comboitem label="AUTORIZADO" value="AUTORIZADO" />
+                    <comboitem label="DEVUELTA" value="DEVUELTA" />
+                    <comboitem label="NO AUTORIZADO" value="NO AUTORIZADO" />
+                </combobox>
+              
+            </div>
+            
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group "  >
+                <label value="(*)" style="color:transparent;font-weight:bold"/>Descripcion:
+              
+                <textbox maxlength="150" 
+                         value="@bind(vm.facturar.mensajesri)"
+                         class="form-control" />
+            </div>
+                     
+            <div class="col-12 col-sm-6 col-md-12 col-lg-12  form-group" align="center" >
+                    
+                <image src="/iconos/guardar.png"  
+                       onClick="@command('guardar')"
+                       tooltiptext="Guardar Registro"/>
+            </div> 
+        </div>
+   
+    </div> -->
+   
+
+    <div class="container_modal">
+
+        <div class="body">
+            <div class="container_row_input">
+                <div class="wrapper_input_mod" style="flex:auto">
+                    <span>Estado: </span>
+                    <combobox 
+                        readonly="true"                                        
+                        selectedItem="@bind(vm.facturar.estadosri)"
+                      
+                        style="width: 100%;"
+                    >
+                        <comboitem label="ANULADA" value="ANULADA" />                    
+                        <comboitem label="AUTORIZADO" value="AUTORIZADO" />
+                        <comboitem label="DEVUELTA" value="DEVUELTA" />
+                        <comboitem label="NO AUTORIZADO" value="NO AUTORIZADO" />
+                    </combobox>
+                </div>
+                
+            </div>
+
+            <div class="container_row_input">
+                <div class="wrapper_input_mod" style="flex:auto">
+                    <span>Descripcion: </span>
+                    <textbox 
+                        maxlength="150" 
+                        value="@bind(vm.facturar.mensajesri)"
+                        class="input_text" 
+                        style="width: 100%;"
+                    />
+                </div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;">
+                <button class="btn_modal" style="width:300px" 
+                        onClick="@command('guardar')">
+                    Guardar
+                </button>
+            </div>
+        </div>
+
+    </div>
+                  
+
+                    
+                  
+</window>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowHistorial"  position="center"  closable="true"  
+         apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('com.ec.controlador.NuevoHistorial')">
+    
+    <caption label="Cliente" style="font-weight:bold"/>  
+    <div class="container_modal">
+
+        
+        <div class="body">
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Fecha Registro: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-calendar icon"></div>
+                        <datebox compact="true" 
+                            value="@bind(vm.entidad.hisFecha)" 
+                            readonly="true"   
+                            buttonVisible="true" 
+                            lenient="true" 
+                            format="dd/MM/yyyy"
+                            class="input_date"
+                         />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Descripcion</span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-book icon"></div>
+                        <textbox  maxlength="100"
+                          value="@bind(vm.entidad.hisDescripcion)" 
+                          
+                          class="input_text" 
+                          />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Mes. </span>
+                    
+                    <div class="wrapper_input_text">
+                        <!--<div class="fa-solid fa-mobile icon"></div>-->
+                        
+                    
+                    <combobox readonly="true"
+                              width="100%"         
+                              class="  textoFechaDateBox"                              
+                              selectedItem="@bind(vm.hisMes)">
+                        <comboitem label="ENERO" value="1"/> 
+                        <comboitem label="FEBRERO" value="2" />                    
+                        <comboitem label="MARZO" value="3" />
+                        <comboitem label="ABRIL" value="4" />
+                        <comboitem label="MAYO" value="5" />
+                        <comboitem label="JUNIO" value="6" />
+                        <comboitem label="JULIO" value="7" />
+                        <comboitem label="AGOSTO" value="8" />
+                        <comboitem label="SEPTIEMBRE" value="9" />
+                        <comboitem label="OCTUBRE" value="10" />
+                        <comboitem label="NOVIEMBRE" value="11" />
+                        <comboitem label="DICIEMBRE" value="12" />
+                    </combobox>
+                    </div>
+                </div>
+                 <div class="wrapper_input_mod">
+                    <span>Anio. </span>
+                    <div class="wrapper_input_text">
+                        <!--<div class="fa-solid fa-mobile icon"></div>-->
+                        <combobox readonly="true"
+                                  width="100%"         
+                                  class="  textoFechaDateBox"                              
+                                  selectedItem="@bind(vm.hisAnio)">
+                        <comboitem label="2022" value="2022"/> 
+                        <comboitem label="2023" value="2023"/>                    
+                            <comboitem label="2024" value="2024" />
+                            <comboitem label="2025" value="2025" />
+                            <comboitem label="2026" value="2026" />
+                            <comboitem label="2027" value="2027" />
+                            <comboitem label="2028" value="2028"/>
+                            <comboitem label="2029" value="2029" />
+                            <comboitem label="2030" value="2030" />
+                            <comboitem label="2031" value="2031" />
+                            <comboitem label="2032" value="2032" />
+                            <comboitem label="2033" value="2033" />
+                            <comboitem label="2034" value="2034" />
+                            <comboitem label="2035" value="2035" />
+                            <comboitem label="2036" value="2036" />
+                            <comboitem label="2037" value="2037" />
+                            <comboitem label="2038" value="2038" />
+                            <comboitem label="2039" value="2039" />
+                            <comboitem label="2040" value="2040" />
+                    </combobox>
+                    </div>
+                </div>
+            </div>
+            <div class="container_row_input">
+                        <div class="wrapper_input_mod">
+                        
+                            <span style="margin:0 0.5em;">Cargar declaracion: </span>
+                            <div class="wrapper_input_text" style="width:86%;position:relative">
+                                <div class="fa-solid fa-unlock-keyhole icon"></div>
+                                <textbox value="@bind(vm.entidad.hisPathDeclaracion)"
+                                         tooltiptext="Cargar declaracion "
+                                         placeholder="Cargar declaracion"
+                                         class="input_text"
+                                         style="width:100%;"
+                                />
+                                <div 
+                                    class="fa-solid fa-folder icon_signature" 
+                                    onClick="@command('subirDeclaracion')"  
+                                    tooltiptext="Subir archivos"
+                                />
+                            </div>
+                        </div>
+                        <div class="wrapper_input_mod">
+                        
+                            <span style="margin:0 0.5em;">Cargar pago: </span>
+                            <div class="wrapper_input_text" style="width:86%;position:relative">
+                                <div class="fa-solid fa-unlock-keyhole icon"></div>
+                                <textbox value="@bind(vm.entidad.hisPathPago)"
+                                         tooltiptext="Pago de la declaracion"
+                                         placeholder="Pago de la declaracion"
+                                         class="input_text"
+                                         style="width:100%;"
+                                />
+                                <div 
+                                    class="fa-solid fa-folder icon_signature" 
+                                    onClick="@command('subirPathPago')"  
+                                    tooltiptext="Subir archivos"
+                                />
+                            </div>
+                        </div>
+                        <div class="wrapper_input_mod">
+                    </div>
+                    </div>
+            
+
+        </div>
+        <div style="display:flex;justify-content:flex-end;">
+            <button class="btn_modal" style="width:300px" onClick="@command('guardar')">
+                Guardar
+            </button>
+        </div>
+    </div>
+                  
+
+                    
+                  
+</window>

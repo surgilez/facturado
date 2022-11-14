@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<window  id="windowIdUsuario"  position="center" class="window_reg" closable="true"
+         apply="org.zkoss.bind.BindComposer" 
+         viewModel="@id('vm') @init('com.ec.controlador.RegistroUsuarioExt')">
+
+    <caption label="Registrar usuario"  class="window_registrar_usuario" />
+
+
+    <script type="text/javascript">
+        
+     
+        
+        const windowModal = () => {
+        const modal1=document.querySelector(".cerrarModal1");
+        const container = document.querySelector(".window_registrar_usuario");
+        const modal = document.querySelector(".register_wrapper_id");
+
+        const modal_btn = Array.from(
+        container.querySelectorAll(".z-window-modal-close")
+        )[0];
+
+
+        const closeModal = (e) => {
+       
+        if(!modal.contains(e.target)){
+        modal_btn.click();
+        }
+        };
+
+        document.addEventListener('click', (e) => closeModal(e));
+        };
+        
+        const deleteTags = (node) => {
+        const container = document.querySelector(node);
+        const list = Array.from(container.querySelectorAll(".z-label"));
+        
+        list.forEach((e) => e.classList.remove("z-label"));
+        };
+      
+        
+        const cerrarModal=()=>{
+        const bt1= document.querySelector(".cerrarModal1")
+        const bt2= document.querySelector(".cerrarModal2")
+        bt2.addEventListener("click", ()=> {
+        location.reload();
+        })
+        bt1.addEventListener("click", ()=> {
+        location.reload();
+        })
+        }
+    
+
+        const showPassword = () => {
+        const password = document.querySelector(".input_password_reg");
+        const icon = document.querySelector(".icon_eye_reg");
+
+        const toggleShowPass = () => {
+        if (password.type === "password") {
+        password.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+        } else {
+        password.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+        }
+        };
+
+        icon.addEventListener("click", toggleShowPass);
+        };
+
+        const stopLoading = () => {
+        const loading = document.querySelector(".registro_inicio");
+        console.log(loading)
+        loading.style.display = "none";
+        };
+
+        (() => {
+        zk.afterMount(function () {
+        setTimeout(() => {
+        windowModal();
+        deleteTags(".register_container_id");
+        cerrarModal();
+        showPassword();
+        stopLoading();
+ 
+        }, 500);
+        });
+        })();
+    </script>
+
+    
+    <div class="container_registro register_container_id">
+        <div class="container_registro register_container_id">
+            <div class="wapper_registro ">
+                <div class="menu" >
+                    <span   style="margin-left:45px;cursor:pointer;" class="cerrarModal1 fas fa-chevron-left"></span>
+                    <span class="cerrarModal2" style="font-size:20px;cursor:pointer;">Volver </span>
+                </div>
+                <div class="all_wrapper" id="loginWin" apply="com.ec.controlador.LoginController">
+                    <div class="contendor_imagen_planta contendor_imagen_planta_1">
+                        <image src="./imagenes/paybills/planta2.png" />
+                    </div>
+
+                    <div class="contendor_imagen_planta contendor_imagen_planta_2">
+                        <image src="./imagenes/paybills/planta1.png" />
+                    </div>
+
+                    <div class="container_landing login_container">
+
+                        <div class="contendor_signin">
+
+                            <div class="contendor_imagen_nube">
+                                <image src="./imagenes/paybills/planta3.png" />
+                            </div>
+                            <div class="info_login">
+                                <span  class="title">Registro</span>
+                                <span class="subtitle">15 Días Gratuitos
+                             
+                                </span>
+                            </div>
+                            <div class="contendor_body">
+                                <div class="contendor_inputs wrapper_all_inputs ">
+                                    <div class="contendor_input">
+                                        <span class="fas fa-user-cog icon "> </span>
+                                        <textbox 
+                                            type="text" 
+                                            placeholder="RUC" 
+                                            class="input" 
+                                            maxlength="13"   
+                                            value="@bind(vm.usuarioSistema.usuRuc)"
+                                        />
+                                    </div>
+                                    <div class="contendor_input">
+                                        <span class="fas fa-user icon "> </span>
+                                        <textbox 
+                                            type="text" 
+                                            placeholder="Usuario" 
+                                            class="input" 
+                                            maxlength="25"   
+                                            value="@bind(vm.usuarioSistema.usuLogin)"
+                                        />
+                                    </div>
+                                    <div class="contendor_input">
+                                        <span class="fas fa-key icon"> </span>
+                                        <textbox 
+                                            type="password" 
+                                            placeholder="Contraseña" 
+                                            class="input input_password_reg" 
+                                            value="@bind(vm.usuarioSistema.usuPassword)"
+                                            maxlength="25"
+                                        />
+                                        <span class="fa-solid icon icon_eye fa-eye icon_eye_reg"></span>
+                                    </div>
+                                
+                                    <div class="contendor_input">
+                                        <span class="fas fa-phone icon "> </span>
+                                        <textbox 
+                                            type="text" 
+                                            placeholder="Teléfono (WhatsApp)" 
+                                            class="input" 
+                                            maxlength="12"   
+                                            value="@bind(vm.usuarioSistema.usuWhatsapp)" 
+                                        />
+                                    </div>
+                                    <div class="contendor_input">
+                                        <span class="fas fa-envelope icon "> </span>
+                                        <textbox 
+                                            type="text" 
+                                            placeholder="Correo Electrónico" 
+                                            class="input" 
+                                            maxlength="100"   
+                                            value="@bind(vm.usuarioSistema.usuCorreo)" 
+                                        />
+                                    </div>
+                                    <div class="contendor_input">
+                                        <span class="fas fa-user-check icon "> </span>
+                                        <textbox 
+                                            type="text" 
+                                            class="input" 
+                                            placeholder="Responsable de la cuenta" 
+                                            maxlength="100"   
+                                            value="@bind(vm.usuarioSistema.usuNombre)"
+                                        />
+                                    </div>
+                                </div>
+           
+                                <div class="contenedor_button">
+                                
+                                
+                                    <button class="btn btn_reg" onClick="@command('guardar')" autodisable="self">
+                                        Registrar
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="contendor_imagen">
+                            <image class="z-image logo" src="./imagenes/facturados/logo.png" />
+                            <image class="z-image imgLogin" src="./imagenes/facturados/imgRegistro.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    
+    <div class="wrapper_loading registro_inicio">
+        <div class="lds-ring">
+            <div />
+            <div />
+            <div />
+            <div />
+        </div>
+    </div>
+   
+    
+   
+
+</window>

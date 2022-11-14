@@ -1,0 +1,24 @@
+
+<?link rel="stylesheet" type="text/css" href="/css/app/base.css"?>   
+<?link rel="stylesheet" type="text/css" href="/css/app/landing/signin.css"?>
+
+<?link rel="stylesheet" type="text/css" href="/css/app/menu.css"?>
+
+<?script src="https://kit.fontawesome.com/484b16c999.js"?>
+<zk>
+    <borderlayout  >
+        <north   border="none" >
+            <include src="/plantilla/banner.zul"/>
+            
+        </north>
+<!--        <west width="auto"  border="none"  autoscroll="true" collapsible="true" splittable="true"  >
+               
+            <include src="/plantilla/menuOpciones.zul"/>
+        </west>-->
+        <center  id="mainContentAsesor" autoscroll="true" self="@{insert(content)}"  >
+            
+        </center>
+        <south autoscroll="true" self="@{insert(footer)}">
+        </south>
+    </borderlayout>
+</zk>

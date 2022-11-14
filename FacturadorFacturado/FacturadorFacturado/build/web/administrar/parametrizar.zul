@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/boostrap/bootstrap.css"?>  
+<?init class="com.ec.seguridad.Autentificador"?>
+<zk class="border border-primary">
+
+    <div  apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.AdmParametrizar')" >
+
+
+        <!-- <div  class="container" >
+            <div  class="row border border-primary" >
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4  form-group "  align="center" >
+                    <label value="Graba IVA" 
+                           style="font-size:14px;padding:  0rem 0rem;"                    
+                           class="form-control bg-info" />
+                    <radiogroup class="form-control form-control-sm " 
+                                selectedItem="@bind(vm.parametrizar.parCodigoIva)" >
+                        <space bar="true"  />                        
+                        <radio label="CON IVA 12%" value="2"/>
+                        <space bar="true"  /> 
+                        <radio label="SIN IVA 0%" value="0"/>
+                        <space bar="true"  />  
+                        
+                    </radiogroup>          
+                       
+                    
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4  form-group "  >
+                    <label value="RUC:" 
+                           style="font-size:14px;padding:  0rem 0rem;"                           
+                           class="form-control bg-info" />
+                    <textbox value="@bind(vm.parametrizar.parRucEmpresa)" 
+                             placeholder="RUC..."
+                             class="form-control"
+                             tooltiptext="RUC" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4  form-group "  >
+                    <label value="Empresa:"   
+                           style="font-size:14px;padding:  0rem 0rem;"                         
+                           class="form-control bg-info" />
+                    <textbox  value="@bind(vm.parametrizar.parEmpresa)" 
+                              onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                              placeholder="Empresa..."
+                              class="form-control"
+                              tooltiptext="Clave emitida por el SRI" />
+                </div>
+              
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4  form-group "  >
+                    <label value="Contacto Empresa:" 
+                           style="font-size:14px;padding:  0rem 0rem;"                   
+                           class="form-control bg-info" />
+                    <textbox value="@bind(vm.parametrizar.parContactoEmpresa)" 
+                             onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                             placeholder="Razon Social"
+                             class="form-control"
+                             tooltiptext="Razon Social" />
+                </div>   
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2  form-group "  >
+                    <label value="Utilidad 1:" 
+                           style="font-size:14px;padding:  0rem 0rem;"                         
+                           class="form-control bg-info" />
+                    <decimalbox  format="###.##" 
+                                 value="@bind(vm.parametrizar.parUtilidad)" 
+                                 placeholder="35"
+                                 class="form-control"
+                                 tooltiptext="Utilidad PVP" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2  form-group "  >
+                    <label value="Utilidad 2:" 
+                           style="font-size:14px;padding:  0rem 0rem;"                          
+                           class="form-control bg-info" />
+                    <decimalbox  format="###.##" 
+                                 value="@bind(vm.parametrizar.parUtilidadPreferencial)" 
+                                 placeholder="Direccion Matriz"
+                                 class="form-control"
+                                 tooltiptext="Utilidad al por mayor" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2  form-group "  >
+                    <label value="Utilidad 2:" 
+                           style="font-size:14px;padding:  0rem 0rem;"                           
+                           class="form-control bg-info" />
+                    <decimalbox  format="###.##" 
+                                 value="@bind(vm.parametrizar.parUtilidadPreferencialDos)" 
+                                 placeholder="30"
+                                 class="form-control"
+                                 tooltiptext="Utilidad por caja" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2  form-group "  >
+                    <label value="Descuento:" 
+                           style="font-size:14px;padding:  0rem 0rem;"                               
+                           class="form-control bg-info" />
+                    <decimalbox  format="###.##" 
+                                 value="@bind(vm.parametrizar.parDescuentoGeneral)" 
+                                 placeholder="Direccion Matriz"
+                                 class="form-control"
+                                 tooltiptext="Direccion matriz" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2  form-group "  >
+                    <label value="# registros factura:" 
+                           style="font-size:14px;padding:  0rem 0rem;"                                
+                           class="form-control bg-info" />
+                    <decimalbox  format="#####" 
+                                 value="@bind(vm.parametrizar.parNumRegistrosFactura)" 
+                                 placeholder="Direccion Matriz"
+                                 class="form-control"
+                                 tooltiptext="Direccion matriz" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2  form-group "  >
+                    <label value="Lleva Kardex: " 
+                           style="font-size:14px;padding:  0rem 0rem;"                              
+                           class="form-control bg-info" />
+                    <radiogroup class="form-control form-control-sm " 
+                                selectedItem="@bind(vm.tieneKardex)" >
+                        <space bar="true"  />
+                        <radio label="SI" value="SI"/>
+                        <space bar="true"  />   
+                        <radio label="NO" value="NO"/>
+                        <space bar="true"  /> 
+                    </radiogroup>           
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-2  form-group "  >
+                    <label value="Credito clientes: " 
+                           style="font-size:14px;padding:  0rem 0rem;"                              
+                           class="form-control bg-info" />
+                    <radiogroup class="form-control form-control-sm " 
+                                selectedItem="@bind(vm.creditoClientes)" >
+                        <space bar="true"  />
+                        <radio label="SI" value="SI"/>
+                        <space bar="true"  />   
+                        <radio label="NO" value="NO"/>
+                        <space bar="true"  /> 
+                    </radiogroup>          
+                       
+                    
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4  form-group "  >
+                    <label value="Tipo de impresion: " 
+                           style="font-size:14px;padding:  0rem 0rem;"                            
+                           class="form-control bg-info" />
+                    <radiogroup class="form-control form-control-sm " 
+                                selectedItem="@bind(vm.parametrizar.parImprimeFactura)" >
+                        <space bar="true"  />
+                        <radio label="Factura Electrónica" value="factura.jasper"/>
+                        <space bar="true"  />   
+                        <radio label="Punto Venta" value="puntoventa.jasper"/>
+                        <space bar="true"  /> 
+                        <radio label="Personalizado" value="facturaa5.jasper"/>
+                        <space bar="true"  /> 
+                    </radiogroup>          
+                       
+                    
+                </div>
+                <div class="col-12 col-sm-12 col-md-2 col-lg-2  form-group "  >
+                    <label value="Ciudad por defecto:"   
+                           style="font-size:14px;padding:  0rem 0rem;"                         
+                           class="form-control bg-info" />
+                    <textbox  value="@bind(vm.parametrizar.parCiudad)" 
+                              onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                              placeholder="Ciudad..."
+                              class="form-control"
+                              tooltiptext="Ciudad para mostrar al crear un cliente" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4  form-group "  >
+                    <label value="Correo por defecto"   
+                           style="font-size:14px;padding:  0rem 0rem;"                         
+                           class="form-control bg-info" />
+                    <textbox  value="@bind(vm.parametrizar.parCorreoDefecto)"                              
+                              placeholder="Correo....."
+                              class="form-control"
+                              tooltiptext="Correo para mostrar al crear un cliente" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-3  form-group "  >
+                    <label value="Mostrar comprobante" 
+                           style="font-size:14px;padding:  0rem 0rem;"                              
+                           class="form-control bg-info" />
+                    <radiogroup class="form-control form-control-sm " 
+                                selectedItem="@bind(vm.imprimeComprobante)" >
+                        <space bar="true"  />
+                        <radio label="SI" value="SI"/>
+                        <space bar="true"  />   
+                        <radio label="NO" value="NO"/>
+                        <space bar="true"  /> 
+                    </radiogroup>           
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3  form-group "  >
+                    <label value="Impresion automatica " 
+                           style="font-size:14px;padding:  0rem 0rem;"                              
+                           class="form-control bg-info" />
+                    <radiogroup class="form-control form-control-sm " 
+                                selectedItem="@bind(vm.imprimeAutomatico)" >
+                        <space bar="true"  />
+                        <radio label="SI" value="SI"/>
+                        <space bar="true"  />   
+                        <radio label="NO" value="NO"/>
+                        <space bar="true"  /> 
+                    </radiogroup>           
+                </div>
+                
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2  form-group "  >
+                    <label value="Nombre de la impresora:"   
+                           style="font-size:14px;padding:  0rem 0rem;"                         
+                           class="form-control bg-info" />
+                    <textbox  value="@bind(vm.parametrizar.parNombreImpresora)"                              
+                              placeholder="Nombre de la impresora"
+                              class="form-control"
+                              tooltiptext="Nombre de la impresora" />
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-3  form-group "  >
+                    <label value="Nuevo registro con lector " 
+                           style="font-size:14px;padding:  0rem 0rem;"                              
+                           class="form-control bg-info" />
+                    <radiogroup class="form-control form-control-sm " 
+                                selectedItem="@bind(vm.parPistolaNuevo)" >
+                        <space bar="true"  />
+                        <radio label="SI" value="SI"/>
+                        <space bar="true"  />   
+                        <radio label="NO" value="NO"/>
+                        <space bar="true"  /> 
+                    </radiogroup>           
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group" align="center" >
+                    
+                    <button src="/iconos/guardar.png"  
+                            class="btn btn btn-secondary btn-sm "
+                            onClick="@command('guardar')"
+                            tooltiptext="Guardar informacion"/>
+ 
+
+                </div> 
+            </div>
+        </div> -->
+
+         <div style="width: 100%; display:grid;place-content: center; ">
+            <div class="container_modal">
+
+                <div class="body">
+                    <div class="container_row_input">
+                        <div class="wrapper_input_mod">
+                            <div style="width:140px">
+                                <span>Graba IVA: </span>
+                            </div>
+                            <div class="wrapper_input_text">
+                                <radiogroup 
+                                    selectedItem="@bind(vm.parametrizar.parCodigoIva)"
+                                >
+                                <space bar="false"  />                        
+                                <radio label="CON IVA 12%" value="2"/>
+                                <space bar="false"  /> 
+                                <radio label="SIN IVA 0%" value="0"/>
+                                <space bar="false"  /> 
+                                </radiogroup>
+                            </div>
+                        </div>
+                        <div class="wrapper_input_mod">
+                            <span>RUC: </span>
+                            <div class="wrapper_input_text">
+                                <textbox 
+                                    value="@bind(vm.parametrizar.parRucEmpresa)" 
+                                    placeholder="RUC..."
+                                    tooltiptext="RUC" 
+                                    class="input_text"
+                                />
+                            </div>
+                        </div>
+                        <div class="wrapper_input_mod">
+                            <span>Razón Social: </span>
+                            <div class="wrapper_input_text">
+                                <div class="fa-solid fa-user icon"></div>
+                                <textbox 
+                                    value="@bind(vm.parametrizar.parContactoEmpresa)" 
+                                    onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                    placeholder="Razon Social"
+                                    class="input_text"
+                                    tooltiptext="Razon Social" 
+                                />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container_row_input">
+                        <div class="wrapper_input_mod">
+                            <span>Utilidad 1: </span>
+                            <decimalbox  
+                                format="###.##" 
+                                value="@bind(vm.parametrizar.parUtilidad)" 
+                                placeholder="35"
+                                class="form-control"
+                                tooltiptext="Utilidad PVP" 
+                            />
+                        </div>
+                        <div class="wrapper_input_mod">
+                            <span>Utilidad 2: </span>
+                            <div class="wrapper_input_text">
+                                <div class="fa-solid fa-clipboard-user icon"></div>
+                                <decimalbox  
+                                    format="###.##" 
+                                    value="@bind(vm.parametrizar.parUtilidadPreferencial)" 
+                                    placeholder="Direccion Matriz"
+                                    class="input_text"
+                                    tooltiptext="Utilidad al por mayor" 
+                                />
+                            </div>
+                        </div>
+                        <div class="wrapper_input_mod">
+                            <span>Utilidad / caja: </span>
+                            <div class="wrapper_input_text">
+                                <div class="fa-solid fa-city icon"></div>
+                                <decimalbox  
+                                    format="###.##" 
+                                    value="@bind(vm.parametrizar.parUtilidadPreferencialDos)" 
+                                    placeholder="30"
+                                    class="input_text"
+                                    tooltiptext="Utilidad por caja" 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body">
+                    <div class="container_row_input">
+                        <div class="wrapper_input_mod">
+                            <div style="width:140px">
+                                <span>Descuento: </span>
+                            </div>
+                            <decimalbox  
+                                format="###.##" 
+                                value="@bind(vm.parametrizar.parDescuentoGeneral)" 
+                                placeholder="Direccion Matriz"
+                                class="form-control"
+                                tooltiptext="Direccion matriz" 
+                            />
+                        </div>
+                        <div class="wrapper_input_mod">
+                            <span>Num. Reg. Fact: </span>
+                            <decimalbox  format="#####" 
+                                 value="@bind(vm.parametrizar.parNumRegistrosFactura)" 
+                                 placeholder="Direccion Matriz"
+                                 class="input_text"
+                                 tooltiptext="Direccion matriz" />
+                        </div>
+                        <div class="wrapper_input_mod" style="width:200px">
+                            <div style="width:120px">
+                                <span>Credito Clientes: </span>
+                            </div>
+                            <radiogroup 
+                                class="radio_group" 
+                                selectedItem="@bind(vm.creditoClientes)" 
+                            >
+                                <space bar="false"  />
+                                <radio label="SI" value="SI"/>
+                                <space bar="false"  />   
+                                <radio label="NO" value="NO"/>
+                                <space bar="false"  /> 
+                            </radiogroup> 
+                        </div>
+                        
+
+                    </div>
+                    <div class="container_row_input">
+                        
+                        <div class="wrapper_input_mod">
+                            <div style="width:140px">
+                                <span>Correo defecto: </span>
+                            </div>
+                            <textbox  
+                                value="@bind(vm.parametrizar.parCorreoDefecto)"                              
+                                placeholder="Correo....."
+                                class="input_text"
+                                tooltiptext="Correo para mostrar al crear un cliente" 
+                            />
+                        </div>
+                        <div class="wrapper_input_mod">
+                            <span>Ciudad defecto </span>
+                            <div class="wrapper_input_text">
+                                <div class="fa-solid fa-city icon"></div>
+                                <textbox  
+                                    value="@bind(vm.parametrizar.parCiudad)" 
+                                    onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                    placeholder="Ciudad..."
+                                    class="input_text"
+                                    tooltiptext="Ciudad para mostrar al crear un cliente" 
+                                />
+                            </div>
+                        </div>
+                        <div class="wrapper_input_mod" style="width:200px">
+                            <div style="width:170px">
+                                <span>Lleva kardex: </span>
+                            </div>
+                            <div class="wrapper_input_text">
+                                <radiogroup 
+                                    class="radio_group" 
+                                    selectedItem="@bind(vm.tieneKardex)" 
+                                >
+                                <space bar="false"  />
+                                <radio label="SI" value="SI"/>
+                                <space bar="false"  />   
+                                <radio label="NO" value="NO"/>
+                                <space bar="false"  /> 
+                            </radiogroup>   
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+
+                 <div class="body">
+                    <div class="container_row_input">
+                        <div class="wrapper_input_mod" style="display:flex; justify-content:flex-start; gap:25px; align-items:center">
+                            <span>Mostrar Comprobante: </span>
+                            <radiogroup 
+                                class="radio_group" 
+                                selectedItem="@bind(vm.imprimeComprobante)" >
+                                <space bar="false"  />
+                                <radio label="SI" value="SI"/>
+                                <space bar="false"  />   
+                                <radio label="NO" value="NO"/>
+                                <space bar="false"  /> 
+                            </radiogroup>
+                        </div>
+
+                        <div class="wrapper_input_mod" style="display:flex; justify-content:flex-start; gap:25px; align-items:center">
+                            <span>Nuevo Reg. con lector: </span>
+                            <div class="wrapper_input_text">
+                                 <radiogroup 
+                                    class="radio_group" 
+                                    selectedItem="@bind(vm.parPistolaNuevo)" 
+                                >
+                                    <space bar="false"  />
+                                    <radio label="SI" value="SI"/>
+                                    <space bar="false"  />   
+                                    <radio label="NO" value="NO"/>
+                                    <space bar="false"  /> 
+                                </radiogroup>
+                            </div>
+                        </div>
+
+                        <div class="wrapper_input_mod" style="display:flex; justify-content:flex-start; gap:25px; align-items:center">
+                            <span>Impresión automática: </span>
+                            <div class="wrapper_input_text">
+                                <radiogroup 
+                                    class="radio_group" 
+                                    selectedItem="@bind(vm.imprimeAutomatico)" 
+                                >
+                                <space bar="false"  />
+                                <radio label="SI" value="SI"/>
+                                <space bar="false"  />   
+                                <radio label="NO" value="NO"/>
+                                <space bar="false"  /> 
+                            </radiogroup> 
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <div class="body">
+                    <div class="container_row_input">
+                        <div class="wrapper_input_mod">
+                            <span>Impresora: </span>
+                            <textbox  
+                                value="@bind(vm.parametrizar.parNombreImpresora)"                              
+                                placeholder="Nombre de la impresora"
+                                class="input_text"
+                                tooltiptext="Nombre de la impresora" 
+                            />
+                        </div>
+
+                         <div class="wrapper_input_mod" style="width:500px">
+                            <span>Impresión: </span>
+                            <div class="wrapper_input_text" >
+                                <radiogroup 
+                                    class="radio_group" 
+                                    selectedItem="@bind(vm.parametrizar.parImprimeFactura)" 
+                                >
+                                    <space bar="false"  />
+                                    <radio label="Factura Electrónica" value="factura.jasper"/>
+                                    <space bar="false"  />   
+                                    <radio label="Punto Venta" value="puntoventa.jasper"/>
+                                    <space bar="false"  /> 
+                                    <radio label="Personalizado" value="facturaa5.jasper"/>
+                                    <space bar="false"  /> 
+                                </radiogroup> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div style="display:flex;justify-content:flex-end;">
+                    <button class="btn_modal" style="width:300px" onClick="@command('guardar')">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!--</window>-->
+</zk>
+

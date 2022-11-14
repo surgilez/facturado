@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowIdUsuario"  position="center" closable="true"  
+         apply="org.zkoss.bind.BindComposer" 
+         viewModel="@id('vm') @init('com.ec.controlador.AgregarUsuarioAdm')">
+    
+    <caption label="Registrar usuario" style="font-weight:bold"
+    /> 
+
+   
+    <div class="container_modal">
+
+        <div class="body">
+            <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <span>Tipo Usuario: </span>
+                    <div class="wrapper_input_text">
+                        <!--<div class="fa-solid fa-address-card icon"></div>-->
+                        <combobox 
+                            readonly="true"
+                            width="100%"
+                            buttonVisible="@bind(!vm.readOnly)" 
+                            selectedItem="@bind(vm.tipoUSuario)">
+                            <comboitem label="ADMINISTRADOR" value="1" />
+                            <comboitem label="VENTAS" value="2" />
+                        </combobox>  
+                        <!--                        <div 
+                            class="fa-solid fa-chevron-down"
+                            style="position: absolute; right: 7px; top: 7px; color: #1247b9;font-size: 13px" 
+                        />-->
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Ruc: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-address-card icon"></div>
+                        <textbox  
+                            maxlength="20"      
+                            readonly="@bind(vm.readOnly)"                    
+                            value="@bind(vm.usuarioSistema.usuRuc)" 
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Correo: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-envelope icon"></div>
+                        <textbox  
+                            maxlength="100"                          
+                            value="@bind(vm.usuarioSistema.usuCorreo)" 
+                            class="input_text"
+                        />
+                    </div>
+                </div>
+                
+
+            </div>
+         
+            <div class="container_row_input">
+                
+                <div class="wrapper_input_mod">
+                    <span>Responsable: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-clipboard-user icon"></div>
+                        <textbox  
+                            maxlength="100" 
+                            onChange="self.setValue(self.getValue().toUpperCase())"
+                            value="@bind(vm.usuarioSistema.usuNombre)" 
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Usuario: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-city icon"></div>
+                        <textbox  
+                            maxlength="100"
+                            value="@bind(vm.usuarioSistema.usuLogin)"                           
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod">
+                    <span>Contraseña: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-city icon"></div>
+                        <textbox 
+                            maxlength="10"  
+                            value="@bind(vm.usuarioSistema.usuPassword)"
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="container_row_input">
+                <div class="wrapper_input">
+                    <span>Plan ilimitado</span>
+
+                    <radiogroup 
+                        class="radio_group"  
+                        selectedItem="@bind(vm.tipoLicencia)" 
+                        onCheck="@command('verificarTipo')">
+                        <radio label="Ilimitado" value="IL"/>
+                        <radio label="Por documentos" value="ND"/>
+                    </radiogroup>
+                </div>
+                
+                 
+               
+                <div class="wrapper_input_mod" visible="@bind(!vm.visualizarNumDoc)">
+                    <span>Fecha de registro:</span>
+                    <div class="wrapper_input_text">
+                        <!--<div class="fa-solid fa-city icon"></div>-->
+                        <datebox width="80%"
+                                 onTimeZoneChange="@command('verificaIniciaPlan')"
+                                 compact="true" 
+                                 value="@bind(vm.usuarioSistema.usuFechaRegistro)" 
+                                 readonly="true" 
+                                 buttonVisible="true" 
+                                 lenient="true" 
+                                 format="dd/MM/yyyy" 
+                        
+                                 constraint="no empty: Ingrese la fecha "
+                        />
+                        <div 
+                            class="fa-solid fa-money-check-dollar " 
+                            onClick="@command('incrementarPlanIlimitado')"  
+                            tooltiptext="Incrementar documentos al plan"
+                        />
+                    </div>
+                </div>
+                <div class="wrapper_input_mod" visible="@bind(vm.visualizarNumDoc)">
+                    <span># de documentos:</span>
+                    <div class="wrapper_input_text">
+                        <!--<div class="fa-solid fa-city icon"></div>-->
+                        <decimalbox  
+                            format="###.##"  
+                            value="@bind(vm.usuarioSistema.usuNumDocumentos)"
+                             
+                            class="input" 
+                        /> 
+                        <div 
+                            class="fa-solid fa-money-check-dollar " 
+                            onClick="@command('incrementarPlan')"  
+                            tooltiptext="Incrementar documentos al plan"
+                        />
+                     
+                   
+                    </div>
+                </div>
+                
+               
+                <div class="wrapper_input_mod" visible="@bind(!vm.visualizarNumDoc)">
+                    <span>Fecha proximo pago:</span>
+                    <div class="wrapper_input_text">
+                        <!--<div class="fa-solid fa-city icon"></div>-->
+                        <datebox 
+                            width="100%"
+                            compact="true" 
+                            value="@bind(vm.usuarioSistema.usuFechaPago)" 
+                            readonly="true" 
+                            buttonVisible="true" 
+                            lenient="true" 
+                            format="dd/MM/yyyy" 
+                       
+                            constraint="no empty: Ingrese la fecha "
+                        />
+                    </div>
+                </div>
+                
+                <div class="wrapper_input_mod" visible="@bind(vm.visualizarNumDoc)">
+                    <span>Total contratado:</span>
+                    <div class="wrapper_input_text">
+                        <!--<div class="fa-solid fa-city icon"></div>-->
+                        <decimalbox  
+                            format="###.##"  
+                            value="@bind(vm.usuarioSistema.usuTotalContratado)"
+                            readonly="true" 
+                            class="input" 
+                        />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div style="display:flex;justify-content:flex-end;">
+            <button class="btn_modal" style="width:300px" onClick="@command('guardar')">
+                Guardar
+            </button>
+        </div>
+    </div>
+    
+                    
+                  
+</window>
