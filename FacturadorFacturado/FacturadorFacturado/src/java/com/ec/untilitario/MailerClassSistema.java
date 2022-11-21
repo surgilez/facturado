@@ -94,7 +94,7 @@ public class MailerClassSistema {
 //            String usuarioSmpt = "defact@deckxel.com";
 //            String password = "Dereckandre02!";
             String asunto = asuntoInf;
-            String host = "no-reply@sutributacion.com";
+            String host = "smtp.office365.com";
             String port = "587";
             String protocol = "smtp";
             String usuarioSmpt = "no-reply@sutributacion.com";
@@ -124,7 +124,7 @@ public class MailerClassSistema {
             // Get the default Session object.
             Session session = Session.getInstance(properties, auth);
             MimeMessage m = new MimeMessage(session);
-            String nickFrom = MimeUtility.encodeText("DEFACT");
+            String nickFrom = MimeUtility.encodeText("SUTRIBUTACION");
 //            String nickTo = MimeUtility.encodeText(amb.getAmNombreComercial());
             Address addressfrom = new InternetAddress(usuarioSmpt, nickFrom);
 

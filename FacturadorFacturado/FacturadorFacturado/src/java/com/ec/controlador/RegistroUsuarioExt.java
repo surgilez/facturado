@@ -215,7 +215,7 @@ public class RegistroUsuarioExt {
                 tipoambienteProd.setLlevarContabilidad("NO");
                 tipoambienteProd.setAmPort("587");
                 tipoambienteProd.setAmProtocol("smtp");
-                tipoambienteProd.setAmUsuarioSmpt("recibos@facturado.ec");
+                tipoambienteProd.setAmUsuarioSmpt("no-reply@sutributacion.com");
                 tipoambienteProd.setAmPassword("Food4Ducks&cats$2");
                 tipoambienteProd.setAmHost("smtp.office365.com");
 
