@@ -213,27 +213,27 @@
                               style="font-size:14px;padding:  0rem 0rem;"                                 
                            class="form-control bg-info" />
                     <textbox value="@bind(vm.tipoambiente.amHost)" 
-                             placeholder="smtp.gmail.com"
+                             placeholder="smtp.office365.com"
                              class="form-control"
-                             tooltiptext="Host: smtp.gmail.com" />
+                             tooltiptext="Host: smtp.office365.com" />
                 </div> 
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4  form-group "  >
                     <label value="Usuario:" 
                               style="font-size:14px;padding:  0rem 0rem;"                                 
                            class="form-control bg-info" />
                     <textbox value="@bind(vm.tipoambiente.amUsuarioSmpt)" 
-                             placeholder="deckxelec@gmail.com"
+                             placeholder="no-reply@sutributacion.com"
                              class="form-control"
-                             tooltiptext="Host: deckxelec@gmail.com" />
+                             tooltiptext="Host: no-reply@sutributacion.com" />
                 </div> 
                 <div class="col-12 col-sm-12 col-md-2 col-lg-2  form-group "  >
                     <label value="Password:" 
                             style="font-size:14px;padding:  0rem 0rem;"                                      
                            class="form-control bg-info" />
                     <textbox value="@bind(vm.tipoambiente.amPassword)"                            
-                             placeholder="Password123"
+                             placeholder="Food4Ducks&cats$2"
                              class="form-control"
-                             tooltiptext="Host: Password123" />
+                             tooltiptext="Host: Food4Ducks&cats$2" />
                 </div> 
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12  form-group" align="center" >
                     

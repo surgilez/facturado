@@ -73,11 +73,11 @@ public class MailerClass {
             amb = ambiente;
 
 //            String asunto = asuntoInf;
-//              String host = "mail.deckxel.com";
-//            String port = "26";
+//              String host = "smtp.office365.com";
+//            String port = "587";
 //            String protocol = "smtp";
-//            String usuarioSmpt = "defact@deckxel.com";
-//            String password = "Dereckandre02!";
+//            String usuarioSmpt = "no-reply@sutributacion.com";
+//            String password = "Food4Ducks&cats$2";
             String asunto = asuntoInf;
             String host = amb.getAmHost();
             String port = amb.getAmPort();
@@ -118,7 +118,7 @@ public class MailerClass {
                         + "                                   text-align: right;\n"
                         + "                                   padding-right: 25px;\n"
                         + "                                   padding-bottom: 10px;\">\n"
-                        + "      SISTEMA DE FACTURACION ELECTRONICA FACTURADO\n"
+                        + "      SISTEMA DE FACTURACION ELECTRONICA SU TRIBUTACION\n"
                         + "    </div>\n"
                         + "    <div class=\"info-top\" style=\"padding: 15px 25px;\n"
                         + "                                 border-top-left-radius: 10px;\n"
@@ -161,12 +161,12 @@ public class MailerClass {
                         + "	\n"
                         + "			  <tr style=\" background: #fafafa; color: #333; border-bottom: 1px solid #eee;;font-size:7px\n"
                         + "				align-items: center;display: flex;justify-content: center;\">\n"
-                        + "			  <td style=\" font-size:9px\">Copyright © 2022 FACTURADO</td>\n"
+                        + "			  <td style=\" font-size:9px\">Copyright © 2022 SU TRIBUTACION</td>\n"
                         + "\n"
                         + "			 </tr>\n"
                         + "			 <tr style=\" background: #fafafa; color: #333; border-bottom: 1px solid #eee;;font-size:7px\n"
                         + "				align-items: center;display: flex;justify-content: center;\">\n"
-                        + "			  <td style=\" font-size:9px\">FACTURADO</td>\n"
+                        + "			  <td style=\" font-size:9px\">SU TRIBUTACION</td>\n"
                         + "\n"
                         + "			 </tr>\n"
                         + "\n"

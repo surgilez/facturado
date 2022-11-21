@@ -16,11 +16,11 @@
 
 
         <div class="contendor_imagen_planta contendor_imagen_planta_1">
-            <image src="./imagenes/paybills/planta2.png" />
+            <image src="./imagenes/sutributacion/planta1.png" />
         </div>
 
         <div class="contendor_imagen_planta contendor_imagen_planta_2">
-            <image src="./imagenes/paybills/planta1.png" />
+            <image src="./imagenes/sutributacion/planta2.png" />
         </div>
 
         <div class="container_landing login_container">
@@ -28,7 +28,7 @@
             <div class="contendor_signin">
 
                 <div class="contendor_imagen_nube">
-                   <image src="./imagenes/paybills/planta3.png" />
+                   <image src="./imagenes/sutributacion/logo3.png" />
                 </div>
                 <div class="info_login">
                     <span class="title">Iniciar sesión</span>
@@ -67,8 +67,8 @@
 
            <div class="contendor_imagen">
 
-                <image class="z-image logo" src="./imagenes/facturados/logo.png" />
-                <image class="z-image imgLogin" src="./imagenes/facturados/imgLogin.png" />
+                <image class="z-image logo" src="./imagenes/sutributacion/slogan.png" />
+                <image class="z-image imgLogin" src="./imagenes/sutributacion/imgLogin.png" />
                 
             </div>
 
