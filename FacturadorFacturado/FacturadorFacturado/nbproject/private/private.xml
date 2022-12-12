@@ -3,10 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/web/nuevo/olvidemiclave.zul</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/web/nuevo/nuevoMailing.zul</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/web/administrar/configuracion_sri.zul</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/src/java/com/ec/controlador/ConfiguracionSri.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/src/java/com/ec/controlador/Consultas.java</file>
             <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/web/inicio.zul</file>
-            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/web/WEB-INF/glassfish-web.xml</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/src/java/com/ec/controlador/Configuracion.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/src/java/com/ec/untilitario/MailerClass.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/src/java/com/ec/controlador/RecuperarClave.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GIT_HUB_SIMON/facturado/FacturadorFacturado/FacturadorFacturado/src/java/com/ec/untilitario/MailerClassSistema.java</file>
         </group>
     </open-files>
 </project-private>

@@ -148,7 +148,7 @@ public class MailerClassSistema {
                         + "                                 overflow: hidden;\n"
                         + "                                 line-height: 32px;\">\n"
                         + "        <div style=\"color:#00000;font-size:18px\"><strong>\n"
-                        + "		 USUARIO FACTURADO : " + amb.getAmNombreComercial().toUpperCase() + "</strong></div>\n"
+                        + "		 USUARIO SUTRIBUTACION : " + amb.getAmNombreComercial().toUpperCase() + "</strong></div>\n"
                         + "		<div style=\"color:#00000;font-size:11px\"><strong>\n"
                         + "		SISTEMA DE FACTURACION ELECTRONICA SU TRIBUTACION  </strong></div>\n"
                         + "    </div>\n"

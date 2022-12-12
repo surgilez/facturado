@@ -582,7 +582,7 @@ public class AdmProducto {
     @Command
     public void exportListboxToExcelTodo() throws Exception {
         try {
-            List<Producto> listarTodo = servicioProducto.FindALlProducto();
+            List<Producto> listarTodo = servicioProducto.FindALlProducto(amb);
             File dosfile = new File(exportarExcelTodo(listarTodo));
             if (dosfile.exists()) {
                 FileInputStream inputStream = new FileInputStream(dosfile);

@@ -86,7 +86,6 @@ public class ListaRetenciones {
 
     public ListaRetenciones() {
         buscarPorFechas();
-       
 
         Session sess = Sessions.getCurrent();
         credential = (UserCredential) sess.getAttribute(EnumSesion.userCredential.getNombre());
@@ -100,17 +99,17 @@ public class ListaRetenciones {
     }
 
     private void buscarPorFechas() {
-        listaRetencionCompras = servicioRetencionCompra.findByFecha(inicio, fin);
+        listaRetencionCompras = servicioRetencionCompra.findByFecha(inicio, fin, amb);
 
     }
 
     private void buscarFacturaCompra() {
-        listaRetencionCompras = servicioRetencionCompra.findByNumeroFactura(buscarNumFac);
+        listaRetencionCompras = servicioRetencionCompra.findByNumeroFactura(buscarNumFac, amb);
 
     }
 
     private void buscarPorSecuencialRetencion() {
-        listaRetencionCompras = servicioRetencionCompra.findBySecuencialRet(buscarSecuencial);
+        listaRetencionCompras = servicioRetencionCompra.findBySecuencialRet(buscarSecuencial, amb);
     }
 
     @Command
@@ -247,7 +246,7 @@ public class ListaRetenciones {
         /*GUARDAMOS LA CLAVE DE ACCESO ANTES DE ENVIAR A AUTORIZAR*/
         valor.setRcoAutorizacion(claveAccesoComprobante);
         AutorizarDocumentos autorizarDocumentos = new AutorizarDocumentos();
-        RespuestaSolicitud resSolicitud = autorizarDocumentos.validar(datos,amb);
+        RespuestaSolicitud resSolicitud = autorizarDocumentos.validar(datos, amb);
         if (resSolicitud != null && resSolicitud.getComprobantes() != null) {
             // Autorizacion autorizacion = null;
 
@@ -259,7 +258,7 @@ public class ListaRetenciones {
                 }
                 try {
 
-                    RespuestaComprobante resComprobante = autorizarDocumentos.autorizarComprobante(claveAccesoComprobante,amb);
+                    RespuestaComprobante resComprobante = autorizarDocumentos.autorizarComprobante(claveAccesoComprobante, amb);
                     for (Autorizacion autorizacion : resComprobante.getAutorizaciones().getAutorizacion()) {
                         FileOutputStream nuevo = null;
 
@@ -302,7 +301,7 @@ public class ListaRetenciones {
 
                             servicioRetencionCompra.modificar(valor);
                             System.out.println("PATH DEL ARCHIVO PARA ENVIAR AL CLIENTE " + archivoEnvioCliente);
-                            ArchivoUtils.reporteGeneralPdfMail(archivoEnvioCliente.replace(".xml", ".pdf"), valor.getRcoCodigo(), "RET",amb);
+                            ArchivoUtils.reporteGeneralPdfMail(archivoEnvioCliente.replace(".xml", ".pdf"), valor.getRcoCodigo(), "RET", amb);
 //                            ArchivoUtils.zipFile(fEnvio, archivoEnvioCliente);
                             /*GUARDA EL PATH PDF CREADO*/
                             valor.setRcoPathRet(archivoEnvioCliente.replace(".xml", ".pdf"));
@@ -326,7 +325,7 @@ public class ListaRetenciones {
                                             valor.getRcoAutorizacion(),
                                             valor.getRcoSecuencialText(),
                                             BigDecimal.ZERO,
-                                            valor.getIdCabecera().getIdProveedor().getProvNombre(),amb);
+                                            valor.getIdCabecera().getIdProveedor().getProvNombre(), amb);
 
                             }
                         }
@@ -443,7 +442,7 @@ public class ListaRetenciones {
 
         try {
 
-            RespuestaComprobante resComprobante = autorizarDocumentos.autorizarComprobante(claveAccesoComprobante,amb);
+            RespuestaComprobante resComprobante = autorizarDocumentos.autorizarComprobante(claveAccesoComprobante, amb);
             for (Autorizacion autorizacion : resComprobante.getAutorizaciones().getAutorizacion()) {
                 FileOutputStream nuevo = null;
 
@@ -486,7 +485,7 @@ public class ListaRetenciones {
 
                     servicioRetencionCompra.modificar(valor);
                     System.out.println("PATH DEL ARCHIVO PARA ENVIAR AL CLIENTE " + archivoEnvioCliente);
-                    ArchivoUtils.reporteGeneralPdfMail(archivoEnvioCliente.replace(".xml", ".pdf"), valor.getRcoCodigo(), "RET",amb);
+                    ArchivoUtils.reporteGeneralPdfMail(archivoEnvioCliente.replace(".xml", ".pdf"), valor.getRcoCodigo(), "RET", amb);
 //                            ArchivoUtils.zipFile(fEnvio, archivoEnvioCliente);
                     /*GUARDA EL PATH PDF CREADO*/
                     valor.setRcoPathRet(archivoEnvioCliente.replace(".xml", ".pdf"));
@@ -509,7 +508,7 @@ public class ListaRetenciones {
                                     valor.getRcoAutorizacion(),
                                     valor.getRcoSecuencialText(),
                                     BigDecimal.ZERO,
-                                    valor.getIdCabecera().getIdProveedor().getProvNombre(),amb);
+                                    valor.getIdCabecera().getIdProveedor().getProvNombre(), amb);
                     }
                 }
 

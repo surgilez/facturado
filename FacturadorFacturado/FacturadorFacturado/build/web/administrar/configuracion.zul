@@ -195,9 +195,9 @@
                                 <textbox 
                                     type="password"
                                     value="@bind(vm.tipoambiente.amClaveAccesoSri)" 
-                                    placeholder="Clave SRI"
+                                    placeholder="Clave firma elec"
                                     class="input_text"
-                                    tooltiptext="Clave SRI" 
+                                    tooltiptext="Clave firma elec" 
                                 />
                             </div>
                         </div>

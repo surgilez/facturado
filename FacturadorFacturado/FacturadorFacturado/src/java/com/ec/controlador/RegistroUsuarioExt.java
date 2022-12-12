@@ -168,8 +168,8 @@ public class RegistroUsuarioExt {
 
                 tipoambiente.setAmPort("587");
                 tipoambiente.setAmProtocol("smtp");
-                tipoambiente.setAmUsuarioSmpt("no-reply@sutributacion.com");
-                tipoambiente.setAmPassword("Food4Ducks&cats$2");
+                tipoambiente.setAmUsuarioSmpt("no-reply@facturado.ec");
+                tipoambiente.setAmPassword(" Food4Ducks&rats");
                 tipoambiente.setAmHost("smtp.office365.com");
                 tipoambiente.setLlevarContabilidad("NO");
                 tipoambiente.setAmMicroEmp(Boolean.FALSE);
@@ -215,8 +215,8 @@ public class RegistroUsuarioExt {
                 tipoambienteProd.setLlevarContabilidad("NO");
                 tipoambienteProd.setAmPort("587");
                 tipoambienteProd.setAmProtocol("smtp");
-                tipoambienteProd.setAmUsuarioSmpt("no-reply@sutributacion.com");
-                tipoambienteProd.setAmPassword("Food4Ducks&cats$2");
+                tipoambienteProd.setAmUsuarioSmpt("recibos@facturado.ec");
+                tipoambienteProd.setAmPassword("Lampara&Luz$");
                 tipoambienteProd.setAmHost("smtp.office365.com");
 
                 tipoambienteProd.setAmMicroEmp(Boolean.FALSE);

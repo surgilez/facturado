@@ -311,7 +311,7 @@
                                     <listitem  onOK="@command('agregarItemLista',valor=each.idProducto)">
                                         <listcell  style="font-size:11px;background-color:#d6eefd" zclass = "mycss-listcell" 
                                                    onDoubleClick="@command('agregarItemLista',valor=each.idProducto)">
-                                            <textbox value="@bind(each.idProducto.prodCodigo)"     onCreate="self.focus()"
+                                            <textbox value="@bind(each.idProducto.prodCodigo)"    
                                                      class="form-control form-control-sm"
                                                      style="font-size:11px;background-color:#d6eefd"
                                                      readonly="true"
