@@ -89,26 +89,26 @@ public class RegistroUsuarioExt {
     @NotifyChange("usuarioSistema")
     public void guardar() {
         if (usuarioSistema != null && !usuarioSistema.getUsuNombre().equals("")
-                    && !usuarioSistema.getUsuLogin().equals("")
-                    && !tipoUSuario.equals("")) {
+                && !usuarioSistema.getUsuLogin().equals("")
+                && !tipoUSuario.equals("")) {
             usuarioSistema.setUsuNivel(Integer.valueOf(tipoUSuario));
             /*verifica si tiene tipo ambiente*/
 
             if (usuarioSistema.getUsuWhatsapp() == null) {
                 Clients.showNotification("Ingrese un numero de contacto..!!",
-                            Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
+                        Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
                 return;
             }
             if (usuarioSistema.getUsuRuc().length() != 13) {
                 Clients.showNotification("Ingrese un RUC valido..!!",
-                            Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
+                        Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
                 return;
             }
 
             Usuario usuariovalida = servicioUsuario.FindUsuarioPorNombre(usuarioSistema.getUsuLogin());
             if (usuariovalida != null) {
                 Clients.showNotification("El nombre de usuario ya se encuentra en uso..!!",
-                            Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
+                        Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
                 return;
             }
             usuarioSistema.setUsuFechaRegistro(new Date());
@@ -168,8 +168,8 @@ public class RegistroUsuarioExt {
 
                 tipoambiente.setAmPort("587");
                 tipoambiente.setAmProtocol("smtp");
-                tipoambiente.setAmUsuarioSmpt("recibos@facturado.ec");
-                tipoambiente.setAmPassword("Lampara&Luz$");
+                tipoambiente.setAmUsuarioSmpt("no-reply@facturado.ec");
+                tipoambiente.setAmPassword("Food4Ducks&rats");
                 tipoambiente.setAmHost("smtp.office365.com");
                 tipoambiente.setLlevarContabilidad("NO");
                 tipoambiente.setAmMicroEmp(Boolean.FALSE);
@@ -215,8 +215,8 @@ public class RegistroUsuarioExt {
                 tipoambienteProd.setLlevarContabilidad("NO");
                 tipoambienteProd.setAmPort("587");
                 tipoambienteProd.setAmProtocol("smtp");
-                tipoambienteProd.setAmUsuarioSmpt("recibos@facturado.ec");
-                tipoambienteProd.setAmPassword("Lampara&Luz$");
+                tipoambienteProd.setAmUsuarioSmpt("no-reply@facturado.ec");
+                tipoambienteProd.setAmPassword("Food4Ducks&rats");
                 tipoambienteProd.setAmHost("smtp.office365.com");
 
                 tipoambienteProd.setAmMicroEmp(Boolean.FALSE);
@@ -231,7 +231,6 @@ public class RegistroUsuarioExt {
 
                 servicioTipoAmbiente.crear(tipoambienteProd);
 
-                
             }
 
 //            usuarioSistema = new Usuario();
@@ -240,10 +239,10 @@ public class RegistroUsuarioExt {
                 MailerClassSistema mail = new MailerClassSistema();
                 mail.sendMailRecuperarPassword(usuarioSistema.getUsuCorreo(), "Cuenta creada", usuarioSistema.getUsuLogin(), usuarioSistema.getUsuPassword(), tipoAmbienteRecup);
                 Clients.showNotification("Los accesos se enviaron al correo electrónico",
-                            Clients.NOTIFICATION_TYPE_INFO, null, "end_center", 2000, true);
+                        Clients.NOTIFICATION_TYPE_INFO, null, "end_center", 2000, true);
             } catch (RemoteException ex) {
                 Clients.showNotification("Ocurrio un error al recuperar su password",
-                            Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
+                        Clients.NOTIFICATION_TYPE_ERROR, null, "end_center", 2000, true);
                 Logger.getLogger(RecuperarClave.class.getName()).log(Level.SEVERE, null, ex);
             }
             windowIdUsuario.detach();
