@@ -5,7 +5,6 @@
 package com.ec.controlador;
 
 import com.ec.entidad.DetalleKardex;
-import com.ec.entidad.FacturasActorizadaSri;
 import com.ec.entidad.Kardex;
 import com.ec.entidad.Producto;
 import com.ec.entidad.Tipoambiente;
@@ -26,7 +25,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;

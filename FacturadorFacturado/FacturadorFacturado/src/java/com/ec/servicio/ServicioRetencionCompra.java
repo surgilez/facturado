@@ -7,6 +7,7 @@ package com.ec.servicio;
 import com.ec.entidad.CabeceraCompra;
 import com.ec.entidad.DetalleRetencionCompra;
 import com.ec.entidad.RetencionCompra;
+import com.ec.entidad.Tipoambiente;
 import com.ec.untilitario.DetalleRetencionCompraDao;
 
 import java.util.ArrayList;
@@ -225,16 +226,17 @@ public class ServicioRetencionCompra {
         return retencionCompra;
     }
 
-    public List<RetencionCompra> findByFecha(Date inicio, Date fin) {
+   public List<RetencionCompra> findByFecha(Date inicio, Date fin, Tipoambiente codTipoambiente) {
 
         List<RetencionCompra> listaRetencionCompras = new ArrayList<RetencionCompra>();
         try {
             //Connection connection = em.unwrap(Connection.class);
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            Query query = em.createQuery("SELECT a FROM RetencionCompra a WHERE a.rcoFecha BETWEEN :inicio AND :fin ORDER BY a.rcoFecha DESC ");
+            Query query = em.createQuery("SELECT a FROM RetencionCompra a WHERE a.rcoFecha BETWEEN :inicio AND :fin AND a.codTipoambiente=:codTipoambiente ORDER BY a.rcoFecha DESC ");
             query.setParameter("inicio", inicio);
             query.setParameter("fin", fin);
+            query.setParameter("codTipoambiente", codTipoambiente);
             listaRetencionCompras = (List<RetencionCompra>) query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -246,15 +248,16 @@ public class ServicioRetencionCompra {
         return listaRetencionCompras;
     }
 
-    public List<RetencionCompra> findByNumeroFactura(String valor) {
+    public List<RetencionCompra> findByNumeroFactura(String valor, Tipoambiente codTipoambiente) {
 
         List<RetencionCompra> listaRetencionCompras = new ArrayList<RetencionCompra>();
         try {
             //Connection connection = em.unwrap(Connection.class);
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            Query query = em.createQuery("SELECT a FROM RetencionCompra a WHERE a.idCabecera.cabNumFactura LIKE :cabNumFactura ORDER BY a.rcoFecha DESC ");
+            Query query = em.createQuery("SELECT a FROM RetencionCompra a WHERE a.idCabecera.cabNumFactura LIKE :cabNumFactura AND a.codTipoambiente=:codTipoambiente ORDER BY a.rcoFecha DESC ");
             query.setParameter("cabNumFactura", "%" + valor + "%");
+            query.setParameter("codTipoambiente", codTipoambiente);
             listaRetencionCompras = (List<RetencionCompra>) query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
@@ -266,15 +269,16 @@ public class ServicioRetencionCompra {
         return listaRetencionCompras;
     }
 
-    public List<RetencionCompra> findBySecuencialRet(String valor) {
+    public List<RetencionCompra> findBySecuencialRet(String valor, Tipoambiente codTipoambiente) {
 
         List<RetencionCompra> listaRetencionCompras = new ArrayList<RetencionCompra>();
         try {
             //Connection connection = em.unwrap(Connection.class);
             em = HelperPersistencia.getEMF();
             em.getTransaction().begin();
-            Query query = em.createQuery("SELECT a FROM RetencionCompra a WHERE a.rcoSecuencialText LIKE :rcoSecuencialText ORDER BY a.rcoFecha DESC ");
+            Query query = em.createQuery("SELECT a FROM RetencionCompra a WHERE a.rcoSecuencialText LIKE :rcoSecuencialText AND a.codTipoambiente=:codTipoambiente  ORDER BY a.rcoFecha DESC ");
             query.setParameter("rcoSecuencialText", "%" + valor + "%");
+            query.setParameter("codTipoambiente", codTipoambiente);
             listaRetencionCompras = (List<RetencionCompra>) query.getResultList();
             em.getTransaction().commit();
         } catch (Exception e) {
