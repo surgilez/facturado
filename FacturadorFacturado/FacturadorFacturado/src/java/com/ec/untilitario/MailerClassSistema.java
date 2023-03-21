@@ -66,10 +66,10 @@ public class MailerClassSistema {
         @Override
         public PasswordAuthentication getPasswordAuthentication() {
 //            amb = servicioTipoAmbiente.FindALlTipoambiente();
-//            String username = amb.getAmUsuarioSmpt().trim();
-//            String password = amb.getAmPassword().trim();
-            String username = "no-reply@sutributacion.com";
-            String password = "Food4Ducks&cats$2";
+            String username = amb.getAmUsuarioSmpt().trim();
+            String password = amb.getAmPassword().trim();
+//            String username = "no-reply@sutributacion.com";
+//            String password = "Food4Ducks&cats$2";
             return new PasswordAuthentication(username, password);
 
         }
@@ -88,23 +88,13 @@ public class MailerClassSistema {
 
             amb = ambiente;
 
-//              String host = "mail.deckxel.com";
-//            String port = "26";
-//            String protocol = "smtp";
-//            String usuarioSmpt = "defact@deckxel.com";
-//            String password = "Dereckandre02!";
+
             String asunto = asuntoInf;
-            String host = "smtp.office365.com";
-            String port = "587";
-            String protocol = "smtp";
-            String usuarioSmpt = "no-reply@sutributacion.com";
-            String password = "Food4Ducks&cats$2";
-//            String asunto = asuntoInf;
-//            String host = amb.getAmHost();
-//            String port = amb.getAmPort();
-//            String protocol = amb.getAmProtocol();
-//            String usuarioSmpt = amb.getAmUsuarioSmpt().trim();
-//            String password = amb.getAmPassword().trim();
+            String host = amb.getAmHost();
+            String port = amb.getAmPort();
+            String protocol = amb.getAmProtocol();
+            String usuarioSmpt = amb.getAmUsuarioSmpt().trim();
+            String password = amb.getAmPassword().trim();
 
             // Propiedades de la conexión
             // Get system properties

@@ -12,13 +12,8 @@ import com.ec.servicio.ServicioTipoAmbiente;
 import com.ec.vista.servicios.ServicioSriCatastro;
 import java.io.File;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -69,7 +64,7 @@ public class Configuracion extends SelectorComposer<Component> {
     @AfterCompose
     public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
         Selectors.wireComponents(view, this, false);
-//        amRuc = credential.getUsuarioSistema().getUsuRuc();
+        amRuc = credential.getUsuarioSistema().getUsuRuc();
         tipoambiente = servicioTipoAmbiente.findALlTipoambientePorUsuario(credential.getUsuarioSistema());
         if (tipoambiente != null) {
             amCodigo = tipoambiente.getAmCodigo();
@@ -134,7 +129,7 @@ public class Configuracion extends SelectorComposer<Component> {
         tipoambiente.setAmEstado(Boolean.FALSE);
 
         servicioTipoAmbiente.modificar(tipoambiente);
-        tipoambiente = servicioTipoAmbiente.findByIdUsuario(tipoambiente, amCodigo);
+        tipoambiente = servicioTipoAmbiente.findByAmCodigo(credential.getUsuarioSistema(), amCodigo);
         /*COLOCA EL NUEVO AMBIENTE EN ACTIVO*/
         tipoambiente.setAmEstado(Boolean.TRUE);
         servicioTipoAmbiente.modificar(tipoambiente);
@@ -302,5 +297,7 @@ public class Configuracion extends SelectorComposer<Component> {
     public void setGrabaICE(String grabaICE) {
         this.grabaICE = grabaICE;
     }
+    
+    
 
 }

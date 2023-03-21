@@ -7,7 +7,7 @@
 
 <?init class="com.ec.seguridad.Autentificador"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
-<?link rel="icon" type="image/x-icon" href="/iconos/deckxel.ico"?>
+<?link rel="icon" type="image/x-icon" href="/iconos/logo.png"?>
 <zk  contentStyle="overflow:auto" class="col-12 col-sm-12 col-md-12 col-lg-12" >
     <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
           viewModel="@id('vm') @init('com.ec.controlador.ListaGuia')" >

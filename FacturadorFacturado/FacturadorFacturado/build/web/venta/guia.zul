@@ -8,7 +8,7 @@
 
 <?init class="com.ec.seguridad.Autentificador"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
-<?link rel="icon" type="image/x-icon" href="/iconos/deckxel.ico"?>
+<?link rel="icon" type="image/x-icon" href="/iconos/logo.png"?>
 <zk  contentStyle="overflow:auto" with="100%" class="container" >
     <!--<caption label="Guia de remision" style="font-weight:bold"/>--> 
     <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 

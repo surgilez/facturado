@@ -3,7 +3,7 @@
 <?script src="https://kit.fontawesome.com/484b16c999.js?v1"?>
 <?script src="./js/inicio_1.js"?>
 
-<?link rel="icon" type="image/x-icon" href="/imagenes/facturados/logo2.jpg"?>  
+<?link rel="icon" type="image/x-icon" href="/iconos/logo.png"?>  
 <?page title="Facturacion electrónica" contentType="text/html;charset=UTF-8"?>
 
 <zk >

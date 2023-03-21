@@ -1,3 +1,4 @@
+
 <?init class="com.ec.seguridad.Autentificador"?>
 <div apply="org.zkoss.bind.BindComposer" 
      viewModel="@id('vm') @init('com.ec.controlador.AdmConductor')" width="100%" >

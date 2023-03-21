@@ -59,6 +59,7 @@ import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Messagebox;
 
@@ -726,6 +727,39 @@ public class ListaRetenciones {
 //            window.detach();
         } catch (Exception e) {
             Messagebox.show("Error " + e.toString(), "Atención", Messagebox.OK, Messagebox.INFORMATION);
+        }
+    }
+
+    @Command
+    public void cambiarEstado(@BindingParam("valor") RetencionCompra valor) throws JRException, IOException, NamingException, SQLException {
+        try {
+            final HashMap<String, RetencionCompra> map = new HashMap<String, RetencionCompra>();
+
+            map.put("valor", valor);
+            org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
+                        "/modificar/estadoret.zul", null, map);
+            window.doModal();
+        } catch (Exception e) {
+            Messagebox.show("Error " + e.toString(), "Atención", Messagebox.OK, Messagebox.INFORMATION);
+        }
+    }
+
+    @Command
+    @NotifyChange({"listaRetencionCompras", "buscarSecuencial"})
+    public void eliminarRetencion(@BindingParam("valor") RetencionCompra valor) throws JRException, IOException, NamingException, SQLException {
+        try {
+            if (Messagebox.show("¿Esta seguro de eliminar la retencion?", "Question", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION) == Messagebox.OK) {
+
+                servicioRetencionCompra.eliminar(valor);
+                buscarPorFechas();
+                Clients.showNotification("Eliminado correctamente...",
+                            Clients.NOTIFICATION_TYPE_INFO, null, "end_center", 1000, true);
+            }
+
+        } catch (Exception e) {
+//            Messagebox.show("Error " + e.toString(), "Atención", Messagebox.OK, Messagebox.INFORMATION);
+            Clients.showNotification("Ocurrio un errot al eliminar " + e.getMessage(),
+                        Clients.NOTIFICATION_TYPE_INFO, null, "end_center", 1000, true);
         }
     }
 }

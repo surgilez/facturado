@@ -84,6 +84,8 @@ public class RegistroUsuarioExt {
     public void setTipoUSuario(String tipoUSuario) {
         this.tipoUSuario = tipoUSuario;
     }
+    
+    private Parametrizar parametrizar = new Parametrizar();
 
     @Command
     @NotifyChange("usuarioSistema")
@@ -137,6 +139,14 @@ public class RegistroUsuarioExt {
             Tipoambiente tipoAmbienteRecup = servicioTipoAmbiente.findALlTipoambientePorUsuario(usuarioSistema);
 
             if (tipoAmbienteRecup == null) {
+                
+                //Tomar correo parametrizar
+                parametrizar = servicioParametrizar.FindALlParametrizar();
+                String correo = parametrizar.getParCorreo();
+                String password = parametrizar.getParPasswordCorreo();
+                String puerto = parametrizar.getParPuerto();
+                String smtp = parametrizar.getParSmtp();
+                
                 // PRUEBAS
                 Tipoambiente tipoambiente = new Tipoambiente();
                 tipoambiente.setAmDirBaseArchivos("//DOCUMENTOSRI");
@@ -166,11 +176,12 @@ public class RegistroUsuarioExt {
                 tipoambiente.setAmEstab("001");
                 tipoambiente.setAmPtoemi("001");
 
-                tipoambiente.setAmPort("587");
+                tipoambiente.setAmPort(puerto);
                 tipoambiente.setAmProtocol("smtp");
-                tipoambiente.setAmUsuarioSmpt("no-reply@facturado.ec");
-                tipoambiente.setAmPassword(" Food4Ducks&rats");
-                tipoambiente.setAmHost("smtp.office365.com");
+                tipoambiente.setAmUsuarioSmpt(correo);
+                tipoambiente.setAmPassword(password);
+                tipoambiente.setAmHost(smtp);
+                
                 tipoambiente.setLlevarContabilidad("NO");
                 tipoambiente.setAmMicroEmp(Boolean.FALSE);
                 tipoambiente.setAmAgeRet(Boolean.FALSE);
@@ -213,11 +224,12 @@ public class RegistroUsuarioExt {
                 tipoambienteProd.setAmDireccionMatriz("");
                 tipoambienteProd.setAmDireccionSucursal("");
                 tipoambienteProd.setLlevarContabilidad("NO");
-                tipoambienteProd.setAmPort("587");
+                
+                tipoambienteProd.setAmPort(puerto);
                 tipoambienteProd.setAmProtocol("smtp");
-                tipoambienteProd.setAmUsuarioSmpt("recibos@facturado.ec");
-                tipoambienteProd.setAmPassword("Lampara&Luz$");
-                tipoambienteProd.setAmHost("smtp.office365.com");
+                tipoambienteProd.setAmUsuarioSmpt(correo);
+                tipoambienteProd.setAmPassword(password);
+                tipoambienteProd.setAmHost(smtp);
 
                 tipoambienteProd.setAmMicroEmp(Boolean.FALSE);
                 tipoambienteProd.setAmAgeRet(Boolean.FALSE);

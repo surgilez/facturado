@@ -8,7 +8,7 @@
 
 <?init class="com.ec.seguridad.Autentificador"?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
-<?link rel="icon" type="image/x-icon" href="/iconos/deckxel.ico"?>
+<?link rel="icon" type="image/x-icon" href="/iconos/logo.png"?>
 
 
 <zk  contentStyle="overflow:auto" with="100%">
@@ -382,6 +382,18 @@
 
                         <div class="factura_body_item">
                             <span class="title">Producto o servicio a facturar</span>
+                            <div class="wrapper_input_mod" style="flex:auto">
+                                <span style="margin:0 4em"> Observación:</span>
+                                <div class="wrapper_input_text" style="width:100%">
+                                    <!--<div class="fa-solid fa-dollar-sign icon"></div>-->
+                                    <textbox  
+                                        maxlength="150" 
+                                        onChange="self.setValue(self.getValue().toUpperCase().trim());" 
+                                        value="@bind(vm.factura.facObservacion)"
+                                        class="input_text" 
+                                    />
+                                </div>
+                            </div>
                             <listbox id="lstFacturar"
                                      model="@load(vm.listaDetalleFacturaDAOMOdel)"
                                      mold="paging" pageSize="14"

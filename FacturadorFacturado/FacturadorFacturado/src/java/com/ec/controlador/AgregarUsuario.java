@@ -46,6 +46,7 @@ public class AgregarUsuario {
     private Tipoambiente amb = new Tipoambiente();
     ServicioParametrizar servicioParametrizar = new ServicioParametrizar();
     private Boolean readOnly = true;
+    private Parametrizar parametrizar = new Parametrizar();
 
     @AfterCompose
     public void afterCompose(@ExecutionArgParam("usuario") Usuario usuarioSistema, @ContextParam(ContextType.VIEW) Component view) {
@@ -114,6 +115,13 @@ public class AgregarUsuario {
             // verifica si existe sino lo crea
             Tipoambiente tipoAmbiente = servicioTipoAmbiente.findALlTipoambientePorUsuario(usuarioSistema);
             if (tipoAmbiente == null) {
+                //Tomar correo parametrizar
+                parametrizar = servicioParametrizar.FindALlParametrizar();
+                String correo = parametrizar.getParCorreo();
+                String password = parametrizar.getParPasswordCorreo();
+                String puerto = parametrizar.getParPuerto();
+                String smtp = parametrizar.getParSmtp();
+                
                 // PRUEBAS
                 Tipoambiente tipoambiente = new Tipoambiente();
 
@@ -142,11 +150,12 @@ public class AgregarUsuario {
                 tipoambiente.setAmDireccionMatriz("QUITO");
                 tipoambiente.setAmDireccionSucursal("QUITO");
 
-                tipoambiente.setAmPort("587");
+                tipoambiente.setAmPort(puerto);
                 tipoambiente.setAmProtocol("smtp");
-                tipoambiente.setAmUsuarioSmpt("no-reply@sutributacion.com");
-                tipoambiente.setAmPassword("Food4Ducks&cats$2");
-                tipoambiente.setAmHost("smtp.office365.com");
+                tipoambiente.setAmUsuarioSmpt(correo);
+                tipoambiente.setAmPassword(password);
+                tipoambiente.setAmHost(smtp);
+                
                 tipoambiente.setLlevarContabilidad("NO");
                 tipoambiente.setAmMicroEmp(Boolean.FALSE);
                 tipoambiente.setAmAgeRet(Boolean.FALSE);
@@ -181,11 +190,12 @@ public class AgregarUsuario {
                 tipoambienteProd.setAmDireccionMatriz("QUITO");
                 tipoambienteProd.setAmDireccionSucursal("QUITO");
 
-                tipoambienteProd.setAmPort("587");
+                tipoambienteProd.setAmPort(puerto);
                 tipoambienteProd.setAmProtocol("smtp");
-                tipoambienteProd.setAmUsuarioSmpt("no-reply@sutributacion.com");
-                tipoambienteProd.setAmPassword("Food4Ducks&cats$2");
-                tipoambienteProd.setAmHost("smtp.office365.com");
+                tipoambienteProd.setAmUsuarioSmpt(correo);
+                tipoambienteProd.setAmPassword(password);
+                tipoambienteProd.setAmHost(smtp);
+                
                 tipoambienteProd.setLlevarContabilidad("NO");
                 tipoambienteProd.setAmMicroEmp(Boolean.FALSE);
                 tipoambienteProd.setAmAgeRet(Boolean.FALSE);

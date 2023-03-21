@@ -12,7 +12,6 @@ import com.ec.seguridad.EnumSesion;
 import com.ec.seguridad.UserCredential;
 import com.ec.servicio.HelperPersistencia;
 import com.ec.servicio.ServicioCliente;
-import com.ec.servicio.ServicioGuia;
 import com.ec.servicio.ServicioNotaCredito;
 import com.ec.servicio.ServicioTipoAmbiente;
 import com.ec.untilitario.ArchivoUtils;
@@ -52,6 +51,7 @@ import org.zkoss.util.media.AMedia;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zul.Messagebox;
 
 /**
  *
@@ -94,7 +94,7 @@ public class ListaNC {
     }
 
     private void consultarFactura() {
-        lstCreditoDebitos = servicioNotaCredito.findBetweenFecha(fechainicio, fechafin);
+        lstCreditoDebitos = servicioNotaCredito.findBetweenFecha(fechainicio, fechafin,amb);
     }
 
     public List<NotaCreditoDebito> getLstCreditoDebitos() {
@@ -198,7 +198,7 @@ public class ListaNC {
     }
 
     private void consultarFacturas() {
-        lstCreditoDebitos = servicioNotaCredito.findLikeCliente(buscarCliente);
+        lstCreditoDebitos = servicioNotaCredito.findLikeCliente(buscarCliente,amb);
 
     }
 
@@ -212,7 +212,7 @@ public class ListaNC {
     }
 
     private void consultarFacturasForCedula() {
-        lstCreditoDebitos = servicioNotaCredito.findLikeCedula(buscarCedula);
+        lstCreditoDebitos = servicioNotaCredito.findLikeCedula(buscarCedula,amb);
 
     }
 
@@ -224,7 +224,7 @@ public class ListaNC {
     }
 
     private void consultarFacturaFecha() {
-        lstCreditoDebitos = servicioNotaCredito.findBetweenFecha(fechainicio, fechafin);
+        lstCreditoDebitos = servicioNotaCredito.findBetweenFecha(fechainicio, fechafin,amb);
     }
     //GRAFICA POR UBICACION
     JFreeChart jfreechartMes;
@@ -712,5 +712,19 @@ public class ListaNC {
             }
         }
 
+    }
+
+    @Command
+    public void cambiarEstadoFact(@BindingParam("valor") NotaCreditoDebito valor) throws JRException, IOException, NamingException, SQLException {
+        try {
+            final HashMap<String, NotaCreditoDebito> map = new HashMap<String, NotaCreditoDebito>();
+
+            map.put("valor", valor);
+            org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
+                        "/modificar/estadonc.zul", null, map);
+            window.doModal();
+        } catch (Exception e) {
+            Messagebox.show("Error " + e.toString(), "Atención", Messagebox.OK, Messagebox.INFORMATION);
+        }
     }
 }

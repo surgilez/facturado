@@ -225,8 +225,31 @@ public class ServicioRetencionCompra {
 
         return retencionCompra;
     }
+    
+       public RetencionCompra findUtlimaRetencion(Tipoambiente tipoambiente) {
+        RetencionCompra retencionCompra = null;
+        List<RetencionCompra> listaRetencionCompras = new ArrayList<RetencionCompra>();
+        try {
+            //Connection connection = em.unwrap(Connection.class);
+            em = HelperPersistencia.getEMF();
+            em.getTransaction().begin();
+            Query query = em.createQuery("SELECT a FROM RetencionCompra a WHERE a.codTipoambiente=:tipoambiente ORDER BY a.rcoSecuencial DESC ");
+            query.setParameter("tipoambiente", tipoambiente);
+            listaRetencionCompras = (List<RetencionCompra>) query.getResultList();
+            if (listaRetencionCompras.size() > 0) {
+                retencionCompra = listaRetencionCompras.get(0);
+            }
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Error en lsa consulta retencionCompra " + e.getMessage());
+        } finally {
+            em.close();
+        }
 
-   public List<RetencionCompra> findByFecha(Date inicio, Date fin, Tipoambiente codTipoambiente) {
+        return retencionCompra;
+    }
+
+    public List<RetencionCompra> findByFecha(Date inicio, Date fin, Tipoambiente codTipoambiente) {
 
         List<RetencionCompra> listaRetencionCompras = new ArrayList<RetencionCompra>();
         try {
@@ -289,5 +312,4 @@ public class ServicioRetencionCompra {
 
         return listaRetencionCompras;
     }
-
 }

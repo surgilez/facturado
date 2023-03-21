@@ -213,6 +213,9 @@ public class Tipoambiente implements Serializable {
     private String amCodigoIce;
     @Column(name = "am_comprobante_imprime")
     private String amComprobanteImprime;
+    
+     @Column(name = "am_rimpe_popular")
+    private Boolean amRimpePopular;
 
     public Tipoambiente() {
     }
@@ -749,6 +752,14 @@ public class Tipoambiente implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
+    }
+    
+     public Boolean getAmRimpePopular() {
+        return amRimpePopular == null ? Boolean.FALSE : amRimpePopular;
+    }
+
+    public void setAmRimpePopular(Boolean amRimpePopular) {
+        this.amRimpePopular = amRimpePopular;
     }
 
 }

@@ -198,6 +198,8 @@ public class Factura implements Serializable {
 //
 //    @Column(name = "fac_chasis")
 //    private String facChasis;
+    @Column(name = "fac_observacion")
+    private String facObservacion;
     @Column(name = "fac_madre")
     private String facMadre;
     @Column(name = "fac_hija")
@@ -806,6 +808,14 @@ public class Factura implements Serializable {
 
     public void setFacBaseIce(BigDecimal facBaseIce) {
         this.facBaseIce = facBaseIce;
+    }
+
+    public String getFacObservacion() {
+        return facObservacion;
+    }
+
+    public void setFacObservacion(String facObservacion) {
+        this.facObservacion = facObservacion;
     }
 
 }
