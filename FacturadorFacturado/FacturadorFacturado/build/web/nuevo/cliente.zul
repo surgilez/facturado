@@ -42,58 +42,36 @@
                         />
                     </div>
                 </div>
-                <div class="wrapper_input_mod">
-                    <span>Nombres: </span>
+               <div class="wrapper_input_mod">
+                    <span>Ciudad: </span>
                     <div class="wrapper_input_text">
-                        <div class="fa-solid fa-user icon"></div>
-                        <textbox  
-                            maxlength="100" 
-                            onChange="self.setValue(self.getValue().toUpperCase())"
-                            value="@bind(vm.cliente.cliNombres)" 
-                            class="input_text"
+                        <div class="fa-solid fa-city icon"></div>
+                        <textbox   maxlength="100" 
+                                   value="@bind(vm.cliente.ciudad)" 
+                                   onChange="self.setValue(self.getValue().toUpperCase());" 
+                                   class="input_text" 
                         />
                     </div>
                 </div>
 
             </div>
             <div class="container_row_input">
-                <div class="wrapper_input_mod">
-                    <span>Apellidos: </span>
-                    <div class="wrapper_input_text">
-                        <div class="fa-solid fa-user icon"></div>
+            <div class="wrapper_input_mod" style="flex:auto">
+                    <span style="">Nombre cliente: </span>
+                    <div class="wrapper_input_text" style="width:100%">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
                         <textbox  
-                            maxlength="100" 
-                            onChange="self.setValue(self.getValue().toUpperCase())"
-                            value="@bind(vm.cliente.cliApellidos)" 
+                            maxlength="300" 
+                            onChange="self.setValue(self.getValue().toUpperCase());" 
+                            value="@bind(vm.cliente.cliNombre)"
                             class="input_text" 
                         />
                     </div>
                 </div>
-                <div class="wrapper_input_mod">
-                    <span>Nombre comercial: </span>
-                    <div class="wrapper_input_text">
-                        <div class="fa-solid fa-clipboard-user icon"></div>
-                        <textbox  id="txtNombreComercial"
-                          maxlength="100" 
-                          value="@bind(vm.cliente.cliNombre)" 
-                          onChange="self.setValue(self.getValue().toUpperCase().trim());" 
-                          
-                          class="input_text" 
-                        />
-                    </div>
-                </div>
-                <div class="wrapper_input_mod">
-                    <span>Ciudad: </span>
-                    <div class="wrapper_input_text">
-                        <div class="fa-solid fa-city icon"></div>
-                        <textbox   maxlength="100" 
-                          value="@bind(vm.cliente.ciudad)" 
-                          onChange="self.setValue(self.getValue().toUpperCase());" 
-                          class="input_text" 
-                        />
-                    </div>
-                </div>
             </div>
+            
+              
+           
 
         </div>
         <div class="body">
@@ -103,13 +81,13 @@
                     <div class="wrapper_input_text">
                         <div class="fa-solid fa-calendar icon"></div>
                         <datebox compact="true" 
-                            value="@bind(vm.fechaReg)" 
-                            readonly="true"   
-                            buttonVisible="true" 
-                            lenient="true" 
-                            format="dd/MM/yyyy"
-                            class="input_date"
-                         />
+                                 value="@bind(vm.fechaReg)" 
+                                 readonly="true"   
+                                 buttonVisible="true" 
+                                 lenient="true" 
+                                 format="dd/MM/yyyy"
+                                 class="input_date"
+                        />
                     </div>
                 </div>
                 <div class="wrapper_input_mod">
@@ -117,10 +95,10 @@
                     <div class="wrapper_input_text">
                         <div class="fa-solid fa-phone icon"></div>
                         <textbox  maxlength="100"
-                          value="@bind(vm.cliente.cliTelefono)" 
+                                  value="@bind(vm.cliente.cliTelefono)" 
                           
-                          class="input_text" 
-                          />
+                                  class="input_text" 
+                        />
                     </div>
                 </div>
                 <div class="wrapper_input_mod">
@@ -128,14 +106,14 @@
                     <div class="wrapper_input_text">
                         <div class="fa-solid fa-mobile icon"></div>
                         <textbox  maxlength="10"  
-                          value="@bind(vm.cliente.cliMovil)"
-                          class="input_text" 
-                          />
+                                  value="@bind(vm.cliente.cliMovil)"
+                                  class="input_text" 
+                        />
                     </div>
                 </div>
             </div>
             <div class="container_row_input">
-                <div class="wrapper_input_mod">
+<!--                <div class="wrapper_input_mod">
                     <span>Monto asignado: </span>
                     <div class="wrapper_input_text">
                         <div class="fa-solid fa-sack-dollar icon"></div>
@@ -145,27 +123,37 @@
                             class="input_text"  
                         />
                     </div>
-                </div>
-                <div class="wrapper_input_mod">
+                </div>-->
+<!--                <div class="wrapper_input_mod">
                     <span>Dirección. </span>
                     <div class="wrapper_input_text">
                         <div class="fa-solid fa-location-dot icon"></div>
                         <textbox id="txtDireccion" maxlength="100" 
-                         value="@bind(vm.cliente.cliDireccion)" 
-                         onChange="self.setValue(self.getValue().toUpperCase());" 
-                          
-                         class="input_text" 
+                                 value="@bind(vm.cliente.cliDireccion)" 
+                                 onChange="self.setValue(self.getValue().toUpperCase());" 
+                                 class="input_text" 
+                        />
+                    </div>
+                </div>-->
+                <div class="wrapper_input_mod" style="flex:auto;justify-content: normal">
+                    <span style="margin:0 0.5em">Direccion. </span>
+                    <div class="wrapper_input_text" style="margin:0 0em">
+                        <div class="fa-solid fa-envelope icon"></div>
+                        <textbox id="txtCorreo"
+                                 maxlength="100" 
+                                 value="@bind(vm.cliente.cliDireccion)"
+                                 class="input_text" 
                         />
                     </div>
                 </div>
-                <div class="wrapper_input_mod">
-                    <span>Correo. </span>
-                    <div class="wrapper_input_text">
+                <div class="wrapper_input_mod" style="flex:auto;justify-content: normal">
+                    <span style="margin:0 0.5em">Correo electrónico. </span>
+                    <div class="wrapper_input_text" style="margin:0 0em">
                         <div class="fa-solid fa-envelope icon"></div>
-                        <textbox id="txtCorreo"
-                         maxlength="100" 
-                         value="@bind(vm.cliente.cliCorreo)"
-                         class="input_text" 
+                        <textbox 
+                                 maxlength="100" 
+                                 value="@bind(vm.cliente.cliCorreo)"
+                                 class="input_text" 
                         />
                     </div>
                 </div>

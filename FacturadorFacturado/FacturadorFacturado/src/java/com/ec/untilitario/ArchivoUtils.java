@@ -925,7 +925,7 @@ public class ArchivoUtils {
         return new InfoPersona(contenido, direccion);
     }
 
-    static final X509Certificate comodoRsaCertificationAuthority = Certificates.decodeCertificatePem(""
+   static final X509Certificate comodoRsaCertificationAuthority = Certificates.decodeCertificatePem(""
                 + "-----BEGIN CERTIFICATE-----\n"
                 + "MIIGQDCCBSigAwIBAgIQOn5WQUsmGTD8lZbZ6fBTcjANBgkqhkiG9w0BAQsFADBM\n"
                 + "MQswCQYDVQQGEwJMVjENMAsGA1UEBxMEUmlnYTERMA8GA1UEChMIR29HZXRTU0wx\n"
@@ -1039,4 +1039,45 @@ public class ArchivoUtils {
                 + "aE10VBlAt4rFQi8Kh0bJk43o1gVj0WY1MRspm7moNyVin+WUzlhyl3IT8OeKNiFl\n"
                 + "RFJUDupYzfrC36/sXqWOrBvCEkM=\n"
                 + "-----END CERTIFICATE-----");
+
+    /*Certificado SRI*/
+    static final X509Certificate letsEncryptCertificateAuthoritySRI = Certificates.decodeCertificatePem("-----BEGIN CERTIFICATE-----\n"
+                + "MIIGtTCCBZ2gAwIBAgIQBIlF+IdZHdhleAYCkgcGWzANBgkqhkiG9w0BAQsFADBP\n"
+                + "MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMSkwJwYDVQQDEyBE\n"
+                + "aWdpQ2VydCBUTFMgUlNBIFNIQTI1NiAyMDIwIENBMTAeFw0yMzAxMjAwMDAwMDBa\n"
+                + "Fw0yNDAyMjAyMzU5NTlaMGMxCzAJBgNVBAYTAkVDMQ4wDAYDVQQHEwVRdWl0bzEk\n"
+                + "MCIGA1UEChMbU2VydmljaW8gZGUgUmVudGFzIEludGVybmFzMR4wHAYDVQQDExVz\n"
+                + "cmllbmxpbmVhLnNyaS5nb2IuZWMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\n"
+                + "AoIBAQCoisInk++MV/PwfMRIroUfCYhH4Me1YO5ipNVPPptZB3lQKJidgnPJ/1ZH\n"
+                + "ujaIDwVh9nxa51wjNJ1LiIZrnxEpoXWEspLaeIL09bY+xLAPloFzYmj20ZDmUy+L\n"
+                + "GDb1SyCHiLM7hn20lNLdR+b4vxHNG7fQumYKTNS3CLNidiVnBbF8pmNPhfBUFXSQ\n"
+                + "DgnMMf95Nj+lObOF4FqWyfKfgeWSzgoTb3A+YhpEdUJxuOTGtARZm3TVIZb0wBZQ\n"
+                + "6k+8kyWAMLQTcx0qBLiQXPeekviDer5B4iy38HMmEDpHaqvdqwATKFU/1uJiervh\n"
+                + "ojpMaTJUgDHhmSvWmwsAXqzxQEMjAgMBAAGjggN3MIIDczAfBgNVHSMEGDAWgBS3\n"
+                + "a6LqqKqEjHnqtNoPmLLFlXa59DAdBgNVHQ4EFgQUWrPAFMf12Oe7HQkxOIfB71J/\n"
+                + "TL0wIAYDVR0RBBkwF4IVc3JpZW5saW5lYS5zcmkuZ29iLmVjMA4GA1UdDwEB/wQE\n"
+                + "AwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwgY8GA1UdHwSBhzCB\n"
+                + "hDBAoD6gPIY6aHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0VExTUlNB\n"
+                + "U0hBMjU2MjAyMENBMS00LmNybDBAoD6gPIY6aHR0cDovL2NybDQuZGlnaWNlcnQu\n"
+                + "Y29tL0RpZ2lDZXJ0VExTUlNBU0hBMjU2MjAyMENBMS00LmNybDA+BgNVHSAENzA1\n"
+                + "MDMGBmeBDAECAjApMCcGCCsGAQUFBwIBFhtodHRwOi8vd3d3LmRpZ2ljZXJ0LmNv\n"
+                + "bS9DUFMwfwYIKwYBBQUHAQEEczBxMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5k\n"
+                + "aWdpY2VydC5jb20wSQYIKwYBBQUHMAKGPWh0dHA6Ly9jYWNlcnRzLmRpZ2ljZXJ0\n"
+                + "LmNvbS9EaWdpQ2VydFRMU1JTQVNIQTI1NjIwMjBDQTEtMS5jcnQwCQYDVR0TBAIw\n"
+                + "ADCCAYAGCisGAQQB1nkCBAIEggFwBIIBbAFqAHYA7s3QZNXbGs7FXLedtM0TojKH\n"
+                + "Rny87N7DUUhZRnEftZsAAAGFzawmMwAABAMARzBFAiB7rwkF3RJ0Grw3sCWiMKxI\n"
+                + "DJyO2bV+EvJ+ezXyJz25XQIhAN8jiJ5XV0CIwAo3qLxx3M6FKDosqKGSicoiBCsI\n"
+                + "4aQiAHcASLDja9qmRzQP5WoC+p0w6xxSActW3SyB2bu/qznYhHMAAAGFzawmbgAA\n"
+                + "BAMASDBGAiEApIeNwhDsnGIZcKl+Nqh322TY900j07vnGai/HSpTBnoCIQCqAWI6\n"
+                + "3AuoMUOqAaE/NHf41uE9DGCi4JDlnCtVsSpDjAB3ADtTd3U+LbmAToswWwb+QDtn\n"
+                + "2E/D9Me9AA0tcm/h+tQXAAABhc2sJmUAAAQDAEgwRgIhAPZNYzdApo9wO6wPxBDJ\n"
+                + "5khuZcQt5G/yX7ohNvnefamNAiEAuhIWvwlPiQONoJfgFycxnPUU2Z3XmJqR7kkR\n"
+                + "MIg6h0kwDQYJKoZIhvcNAQELBQADggEBAEgzzqZT0V9c27EOsbNiDfrEfc5hsa7P\n"
+                + "n2RkI0eErErnIzIEcdSR2d/7S01xtcB4j+uvwT+wgH9TIkc9HGhdLVJvVpYtmre9\n"
+                + "ve+w/gTEuaxDHcPJRnNft/furyHqGAOKxo/PruJaJbjL7Xv3IHlT7PHts3WcnauE\n"
+                + "nWfhRF70QRrjOx3AVWC2q9q0ZnkMgAthXUN/xn5ZjJR0fYr4uq5UlnDSabWnrhug\n"
+                + "j01LbJrY/d4L7zDY0Fh7p/QYSwCbDbIq1gFc4JsFfL77y2tzRV6W9xtIn16XlrMJ\n"
+                + "yti6WSiR0lkJmC7COVYzFH76mL9tz945nng7m+fJhV1uJt7r/aU9aLw=\n"
+                + "-----END CERTIFICATE-----");
 }
+
